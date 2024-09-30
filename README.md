@@ -1,4 +1,4 @@
-# Sistema de Aluguel de Carros
+# Sistema de Moeda Estudantil
 
 Este projeto é um protótipo de aplicação de sistema de moeda estudantil, desenvolvido Spring Boot e React.js.
 
@@ -35,3 +35,11 @@ Para cadastrar uma vantagem, a empresa parceira deve adicionar também uma descr
 Ao resgatar uma vantagem, o aluno deve ter o valor descontado do seu saldo. Um email de cupom deve ser enviado para que ele utilize na troca presencial. Um email também deve ser enviado ao parceiro, para que ele possa conferir a troca. Ambos os emails devem incluir um código gerado pelo sistema, a fim de facilitar o processo de conferência.
 
 Por fim, alunos, professores e empresas parceiras precisam ter um login e uma senha cadastrados para acessar o sistema. Em todos os casos, um processo de autenticação é necessário para realização dos requisitos.
+
+## História de Usuário
+
+Eu, como professor, quero distribuir minhas moedas para alunos como desejo para encorajar bom comportamento.
+
+Eu, como aluno, quero ser capaz de utilizas as moedas fornecidas para comprar diversas vantágens.
+
+Eu, como empresa, quero distribuir vantagens para alunos que tenham as moedas suficientes. 
