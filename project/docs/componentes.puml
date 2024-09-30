@@ -1,0 +1,18 @@
+@startuml
+skinparam componentStyle uml2
+
+[Empresas] as em
+[Aluno] as al
+[Professor] as pf
+[Vantagem] as vt
+[Moeda] as md
+
+pf --0)- md: Fornece
+md --0)- al: Usa moedas
+
+
+em --0)- vt: Fornece
+vt --0)- al
+
+
+@enduml
