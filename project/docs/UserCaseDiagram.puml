@@ -1,0 +1,37 @@
+@startuml
+left to right direction
+
+actor "Aluno" as aluno
+actor "Professor" as professor
+actor "Empresa Parceira" as empresa
+
+rectangle Sistema {
+    usecase "Realizar Cadastro" as RealizarCadastro
+    usecase "Realizar Login" as RealizarLogin
+
+    usecase "Distribuir Moedas" as DistribuirMoedas
+    usecase "Receber moedas" as ReceberMoedas
+    usecase "Consultar saldo e transações" as VisualizarExtratoConta
+
+    usecase "Cadastrar vantagens" as CadastrarVantagem
+    usecase "Trocar moedas por vantagens" as TrocarMoedas
+    usecase "Enviar cupom para aluno e empresa" as EnviarCupom
+}
+
+aluno --> RealizarCadastro
+aluno --> RealizarLogin
+aluno --> ReceberMoedas
+aluno --> VisualizarExtratoConta
+aluno --> TrocarMoedas
+
+professor --> RealizarLogin
+professor --> DistribuirMoedas
+professor --> VisualizarExtratoConta
+
+empresa --> RealizarCadastro
+empresa --> RealizarLogin
+empresa --> CadastrarVantagem
+
+TrocarMoedas .> EnviarCupom : <<include>>
+
+@enduml
