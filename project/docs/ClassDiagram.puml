@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+Usuario <|-- Aluno
+Usuario <|-- Professor
+Usuario "1..1" *-- "1..1" Conta : pertence a
+Aluno "0..*" --* "1..1" InstituicaoEnsino
+Aluno -- Curso
+Aluno -- Vantagem
+Professor "0..*" --* "1..1" InstituicaoEnsino
+Professor "0..*" --* "1..1" Departamento : pertence a
+Empresa "1..1" --o "0..*" Vantagem : oferece
+
+class Usuario {
+    - nome: String
+    - CPF: String
+    - login: String
+    - senha: String
+    + autenticar() : void
+}
+
+class Aluno{
+    - RG: String
+    - email: String
+    - endereço: String
+    - instituicaoEnsino: InstituicaoEnsino
+    - curso: Curso
+    + cadastrar() : void
+    + trocarMoedas(Vantagem vantagem) : Boolean
+}
+
+class Professor{
+    - instituicaoEnsino : InstituicaoEnsino
+    - departamento : Departamento
+    + atribuirMoedas(Aluno aluno): String
+}
+
+class Conta{
+    - saldo: Double
+    + consultarExtrato() : String
+    + consultarSaldo() : Double
+}
+
+class Empresa{}
+class InstituicaoEnsino{}
+class Vantagem {}
+
+enum Curso {}
+enum Departamento {}
+
+@enduml
