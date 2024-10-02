@@ -43,3 +43,11 @@ Eu, como professor, quero distribuir minhas moedas para alunos como desejo para 
 Eu, como aluno, quero ser capaz de utilizas as moedas fornecidas para comprar diversas vantágens.
 
 Eu, como empresa, quero distribuir vantagens para alunos que tenham as moedas suficientes. 
+
+## Casos de Uso
+
+<img src="./project/img/UserCaseDiagram.png" width="400">
+
+## Diagrama de Classes
+
+<img src="./project/img/ClassDiagram.png">
