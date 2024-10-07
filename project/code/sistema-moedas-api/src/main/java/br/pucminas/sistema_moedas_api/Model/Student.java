@@ -40,12 +40,10 @@ public class Student {
   @NotBlank
   String RG; // Numero do Registro Geral = Brazilian National Identity Card Number
 
-  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "educationalInstitution_id", nullable = false)
   EducationalInstitution educationalInstitution; // Instituicao de Ensino
 
-  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "course_id", nullable = false)
   Course course; // Curso
