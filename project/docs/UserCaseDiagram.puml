@@ -6,29 +6,30 @@ actor "Professor" as professor
 actor "Empresa Parceira" as empresa
 
 rectangle Sistema {
-    usecase "Realizar Cadastro" as RealizarCadastro
+    usecase "Realizar Cadastro" as RealizarCadastroAluno
+    usecase "Realizar Cadastro" as RealizarCadastroEmpresa
     usecase "Realizar Login" as RealizarLogin
 
     usecase "Distribuir Moedas" as DistribuirMoedas
-    usecase "Receber moedas" as ReceberMoedas
-    usecase "Consultar saldo e transações" as VisualizarExtratoConta
+
+    usecase "Consultar saldo e transações" as ConsultarSaldoAluno
+    usecase "Consultar saldo e transações" as ConsultarSaldoProfessor
 
     usecase "Cadastrar vantagens" as CadastrarVantagem
     usecase "Trocar moedas por vantagens" as TrocarMoedas
     usecase "Enviar cupom para aluno e empresa" as EnviarCupom
 }
 
-aluno --> RealizarCadastro
+aluno --> RealizarCadastroAluno
 aluno --> RealizarLogin
-aluno --> ReceberMoedas
-aluno --> VisualizarExtratoConta
+aluno --> ConsultarSaldoAluno
 aluno --> TrocarMoedas
 
 professor --> RealizarLogin
 professor --> DistribuirMoedas
-professor --> VisualizarExtratoConta
+professor --> ConsultarSaldoProfessor
 
-empresa --> RealizarCadastro
+empresa --> RealizarCadastroEmpresa
 empresa --> RealizarLogin
 empresa --> CadastrarVantagem
 
