@@ -4,7 +4,6 @@ import br.pucminas.sistema_moedas_api.DTO.StudentCreateDTO;
 import br.pucminas.sistema_moedas_api.DTO.StudentGetDTO;
 import br.pucminas.sistema_moedas_api.Model.Student;
 import br.pucminas.sistema_moedas_api.Service.StudentService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 
 @RestController

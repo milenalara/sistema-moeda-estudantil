@@ -1,0 +1,28 @@
+@startuml Implementacao
+skinparam componentStyle uml2
+
+node ServidorAplicação{
+
+    [Controller]
+    [Repository]
+    [Service]
+
+    [CargaIncial]
+
+}
+
+node Cliente{
+
+    [Browser]
+
+}
+
+Cliente -- ServidorAplicação: <HTTP>
+CargaInicial --0)- Service
+Service --0)- Repository
+Repository --0)- Controller
+
+Browser --0)- Controller
+
+
+@enduml
