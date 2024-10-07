@@ -8,7 +8,7 @@ function home() {
     <>
       <h1>Página home</h1>
       <Link to="/aluno">Entrar como aluno</Link>
-
+      <br></br>
       <Link to="/empresa">Entrar como empresa</Link>
     </>
   )
