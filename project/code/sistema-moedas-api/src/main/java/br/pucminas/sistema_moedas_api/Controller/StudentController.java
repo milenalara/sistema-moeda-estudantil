@@ -40,8 +40,19 @@ public class StudentController {
   }
 
   @PostMapping
+<<<<<<< HEAD
   public ResponseEntity<Void> adicionarStudent(@RequestBody Student student) {
     studentService.create(student);
     return ResponseEntity.noContent().build();
+=======
+  public String adicionarStudent(@RequestBody Student student, BindingResult result) {
+
+    if (result.hasErrors()) {
+      return "criarStudent";
+    }
+
+    studentRepository.save(student);
+    return "redirect:/createStudent";
+>>>>>>> bd8a5f93a00f45474630fdcebd45dec464c73461
   }
 }
