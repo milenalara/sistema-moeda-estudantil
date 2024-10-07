@@ -38,11 +38,11 @@ Por fim, alunos, professores e empresas parceiras precisam ter um login e uma se
 
 ## História de Usuário
 
-Eu, como professor, quero distribuir minhas moedas para alunos como desejo para encorajar bom comportamento.
+Eu, como professor, quero distribuir minhas moedas para alunos como desejo para encorajar bom comportamento. Além disso, eu quero me cadastrar e realizar login para poder gerenciar meus dados. 
 
-Eu, como aluno, quero ser capaz de utilizas as moedas fornecidas para comprar diversas vantágens.
+Eu, como aluno, quero ser capaz de utilizar as moedas fornecidas para comprar diversas vantágens. Além disso, eu quero me cadastrar e realizar login para poder gerenciar meus dados. Finalmente, eu quero poder consultar meu saldo de meodas e as possíveis vantagens para poder realizar minhas transações.
 
-Eu, como empresa, quero distribuir vantagens para alunos que tenham as moedas suficientes. 
+Eu, como empresa, quero distribuir vantagens para alunos que tenham as moedas suficientes. Além disso, eu quero me cadastrar e realizar login para poder gerenciar meus dados. 
 
 ## Casos de Uso
 

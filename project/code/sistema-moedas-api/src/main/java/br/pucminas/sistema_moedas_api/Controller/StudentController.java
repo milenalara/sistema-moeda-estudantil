@@ -40,8 +40,6 @@ public class StudentController {
 
   @PostMapping
   public String adicionarStudent(@RequestBody Student student, BindingResult result) {
-    System.out.println("STUDENT ");
-
 
     if (result.hasErrors()) {
       return "criarStudent";
