@@ -5,7 +5,6 @@ public record StudentGetDTO(
     String email,
     String CPF,
     String RG,
-    StudentEducationalInstitutionDTO educationalInstitution,
-    StudentCourseDTO course
-) {
+    StudentGetEducationalInstitutionDTO educationalInstitution,
+    StudentGetCourseDTO course) {
 }
