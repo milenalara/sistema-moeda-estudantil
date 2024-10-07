@@ -4,7 +4,7 @@ import MyComponent from './pages/MyComponent'
 import Aluno from './components/aluno'
 import Home from './components/home'
 import Empresa from './components/empresa'
-import CreateAluno from './components/createAluno'
+import AdminAluno from './components/adminAluno'
 
 import {
   BrowserRouter as Router,
@@ -30,7 +30,7 @@ function App() {
           />
           <Route
             path="/createAluno"
-            element={<CreateAluno />}
+            element={<AdminAluno />}
           />
           <Route
             path="/empresa"

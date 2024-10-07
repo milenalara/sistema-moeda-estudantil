@@ -2,19 +2,16 @@ import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
-function createAluno() {
+
+function adminAluno() {
   const [count, setCount] = useState(0)
   const [alunos, setAlunos] = useState([])
-  const [newAluno, setAluno] = useState({id: 0, name: '', email: '', cpf: '', rg: '', institution: 0, course: 0})
+  const [newAluno, setAluno] = useState({name: '', email: '', CPF: '', RG: '', educationalInstitutionId: 0, courseId: 0})
 
   useEffect(() => {
     getAlunos();
   }, []);
 
-
-  const handleIdChange = (e) => {
-    setAluno({ ...newAluno, id: Number(e.target.value) });
-  }
   const handleNameChange = (e) => {
     setAluno({ ...newAluno, name: e.target.value });
   }
@@ -22,16 +19,16 @@ function createAluno() {
     setAluno({ ...newAluno, email: e.target.value });
   }
   const handleCpfChange = (e) => {
-    setAluno({ ...newAluno, cpf: e.target.value });
+    setAluno({ ...newAluno, CPF: e.target.value });
   }
   const handleRgChange = (e) => {
-    setAluno({ ...newAluno, rg: e.target.value });
+    setAluno({ ...newAluno, RG: e.target.value });
   }
   const handleInstitutionChange = (e) => {
-    setAluno({ ...newAluno, institution: Number(e.target.value) });
+    setAluno({ ...newAluno, educationalInstitutionId: Number(e.target.value) });
   }
   const handleCourseChange = (e) => {
-    setAluno({ ...newAluno, course: Number(e.target.value) });
+    setAluno({ ...newAluno, courseId: Number(e.target.value) });
   }
   const getAlunos = async () => {
     const res = await axios.get('http://localhost:8080/api/student')
@@ -40,32 +37,36 @@ function createAluno() {
   const createAluno = async () => {
     await axios.post('http://localhost:8080/api/student', newAluno)
   }
+  const deleteAluno = async (id) => {
+    console.log(id);
+    
+    await axios.delete(`http://localhost:8080/api/student/delete/${id}`)}
+  
   return (
     <>
       <h1>Hello aluno</h1>
 
-      <p>Alunos:</p>
+      <h2>Alunos:</h2>
       <ul>
         {alunos.map((aluno) => (
-          <li key={aluno.id}>{aluno.name}</li>
+          <><li key={aluno.name}>{aluno.name}</li>
+          <button onClick={() => deleteAluno(aluno.id)}>Deletar</button></>
         ))}
       </ul>
 
-      <p>Criar aluno:</p>
-      Id:
-      <input type="number" name="aluno id" id="id" value={newAluno.id} onChange={handleIdChange} />
+      <h2>Criar aluno:</h2>
       Nome:
       <input type="text" name="aluno name" id="name" value={newAluno.name} onChange={handleNameChange} />
       Email:
       <input type="text" name="aluno email" id="email" value={newAluno.email} onChange={handleEmailChange} />
       CPF:
-      <input type="number" name="aluno cpf" id="cpf" value={newAluno.cpf} onChange={handleCpfChange} />
+      <input type="number" name="aluno cpf" id="cpf" value={newAluno.CPF} onChange={handleCpfChange} />
       RG:
-      <input type="number" name="aluno rg" id="rg" value={newAluno.rg} onChange={handleRgChange} />
+      <input type="number" name="aluno rg" id="rg" value={newAluno.RG} onChange={handleRgChange} />
       Id instituicao:
-      <input type="number" name="aluno institution" id="institution" value={newAluno.institution} onChange={handleInstitutionChange} />
+      <input type="number" name="aluno institution" id="institution" value={newAluno.educationalInstitutionId} onChange={handleInstitutionChange} />
       ID curso:
-      <input type="number" name="aluno course" id="course" value={newAluno.course} onChange={handleCourseChange} />
+      <input type="number" name="aluno course" id="course" value={newAluno.courseId} onChange={handleCourseChange} />
 
 
 
@@ -75,4 +76,4 @@ function createAluno() {
   )
 }
 
-export default createAluno;
+export default adminAluno;

@@ -8,7 +8,7 @@ function Aluno() {
     <>
      <h1>Hello aluno</h1>
 
-     <Link to="/createAluno">Criar aluno</Link>
+     <Link to="/createAluno">Administrar alunos</Link>
     </>
   )
 }

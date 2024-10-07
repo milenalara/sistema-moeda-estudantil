@@ -36,6 +36,14 @@ public class StudentService {
     return convertToDTO(foundStudent);
   }
 
+  public StudentGetDTO deleteById(Long id) {
+    Optional<Student> student = studentRepository.findById(id);
+    Student foundStudent = student.orElseThrow(() -> new RuntimeException(
+        "Usuário não encontrado! Id: " + id + ", Tipo: " + Student.class.getName()));
+    studentRepository.delete(foundStudent);
+    return convertToDTO(foundStudent);
+  }
+
   public List<StudentGetDTO> findAll() {
     List<Student> students = studentRepository.findAll();
     return students.stream().map(this::convertToDTO).collect(Collectors.toList());
@@ -45,8 +53,10 @@ public class StudentService {
   public Student create(StudentCreateDTO student) {
     Student newStudent = new Student();
 
-    Course course = courseRepository.findById(student.courseId()).orElseThrow(()-> new RuntimeException("Course not found"));
-    EducationalInstitution educationalInstitution = educationalInstitutionRepository.findById(student.educationalInstitutionId()).orElseThrow(()-> new RuntimeException("Course not found"));
+    Course course = courseRepository.findById(student.courseId())
+        .orElseThrow(() -> new RuntimeException("Course not found"));
+    EducationalInstitution educationalInstitution = educationalInstitutionRepository
+        .findById(student.educationalInstitutionId()).orElseThrow(() -> new RuntimeException("Course not found"));
 
     newStudent.setId(null);
     newStudent.setName(student.name());
@@ -62,9 +72,11 @@ public class StudentService {
 
   private StudentGetDTO convertToDTO(Student student) {
     StudentGetCourseDTO course = new StudentGetCourseDTO(student.getId(), student.getCourse().getName());
-    StudentGetEducationalInstitutionDTO educationalInstitution = new StudentGetEducationalInstitutionDTO(student.getId(), student.getEducationalInstitution().getName());
+    StudentGetEducationalInstitutionDTO educationalInstitution = new StudentGetEducationalInstitutionDTO(
+        student.getId(), student.getEducationalInstitution().getName());
 
     return new StudentGetDTO(
+        student.getId(),
         student.getName(),
         student.getEmail(),
         student.getCPF(),

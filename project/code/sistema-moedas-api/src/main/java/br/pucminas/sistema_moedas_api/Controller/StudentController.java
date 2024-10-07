@@ -2,10 +2,10 @@ package br.pucminas.sistema_moedas_api.Controller;
 
 import br.pucminas.sistema_moedas_api.DTO.StudentCreateDTO;
 import br.pucminas.sistema_moedas_api.DTO.StudentGetDTO;
-import br.pucminas.sistema_moedas_api.Model.Student;
 import br.pucminas.sistema_moedas_api.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,5 +36,11 @@ public class StudentController {
   public ResponseEntity<Void> create(@RequestBody StudentCreateDTO student) {
     studentService.create(student);
     return ResponseEntity.noContent().build();
+  }
+
+  @DeleteMapping("/delete/{id}")
+  public ResponseEntity<StudentGetDTO> deleteStudent(@PathVariable("id") long id) {
+      StudentGetDTO student = studentService.deleteById(id);
+      return ResponseEntity.ok().body(student);
   }
 }
