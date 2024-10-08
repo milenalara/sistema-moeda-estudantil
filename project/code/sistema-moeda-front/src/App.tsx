@@ -4,7 +4,9 @@ import MyComponent from './pages/MyComponent'
 import Aluno from './components/aluno'
 import Home from './components/home'
 import Empresa from './components/empresa'
+import Admin from './components/admin'
 import AdminAluno from './components/adminAluno'
+import AdminEmpresa from './components/adminEmpresa'
 
 import {
   BrowserRouter as Router,
@@ -29,12 +31,20 @@ function App() {
             element={<Aluno />}
           />
           <Route
-            path="/createAluno"
+            path="/adminAluno"
             element={<AdminAluno />}
           />
           <Route
             path="/empresa"
             element={<Empresa />}
+          />
+          <Route
+            path="/admin"
+            element={<Admin />}
+          />
+          <Route
+            path="/adminEmpresa"
+            element={<AdminEmpresa />}
           />
         </Routes>
       </Router>

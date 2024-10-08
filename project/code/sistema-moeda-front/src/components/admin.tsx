@@ -6,8 +6,11 @@ function Aluno() {
 
   return (
     <>
-     <h1>Hello aluno</h1>
+     <h1>Hello admin</h1>
 
+     <Link to="/adminAluno">Administrar alunos</Link>
+    <br></br>
+     <Link to="/adminEmpresa">Administrar empresas</Link>
     </>
   )
 }
