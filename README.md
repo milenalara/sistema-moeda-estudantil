@@ -51,3 +51,36 @@ Eu, como empresa, quero distribuir vantagens para alunos que tenham as moedas su
 ## Diagrama de Classes
 
 <img src="./project/img/ClassDiagram.png">
+
+## Modelo Entidade Relacionamento
+
+## Definição e implementação da estratégia de acesso ao banco de dados
+
+No nosso projeto, optamos por utilizar o repositório (_repository_) como estratégia de acesso de banco de dados. O repository abstrai a manipulação dos dados, trazendo o foco para os objetos de domínio do negócio, desacoplando a camada de negócios da camada de persistência.
+
+Hoje, o _repository_ é o padrão mais utilizado em arquiteturas modernas, como a arquitetura orientada ao domínio (Domain-Driven Design). Ele fornece diversos métodos para fazer as operações mais comuns do CRUD e, em muitos casos, não precisamos nos preocupar em escrever comandos de manipulação de dados da linguagem de consulta (query) escolhida. Isso facilita a separação entre essas camadas e a substituição da tecnologia de gerenciamento de dados.
+
+Como _server-side_ nossa aplicação está sendo desenvolvido em Spring Boot, estamos utilizando o framework **Spring Data JPA**, que simplifica a implementação da **Jakarta Persistence API (JPA)**. 
+
+### Jakarta Persistence API
+
+**Jakarta Persistence** é parte do **Jakarta EE**, uma série de especificações desenvolvidas originalmente pela Oracle e, posteriormente, pela Eclipse Foundation, para a produção de software comercial utilizando Java. O módulo de Persistence trata especificamente da gestão da     persistência de dados e do mapeamento do modelo orientado a objetos para o modelo relacional em ambientes Java.
+
+Através de sua API (JPA), é possível implementar de maneira simplificada uma série de operações de CRUD, utilizando anotações que abstraem as operações no banco de dados. Isso é feito através da Entity Manager API, que faz a gestão do ciclo de vida das entidades na aplicação.
+
+Outra vantagem da JPA é que ela proporciona ao desenvolver um maior controle da granularidade de suas classes entidade (entity classes) e seus dados. As tabelas de banco de dados podem ser mapeadas diretamente em objetos java utilizando as anotações. De maneira geral, podemos dizer que cada classe se torna uma tabela, e cada atributo da classe se torna uma coluna dessa tabela. Mas vale notar que é possível utilizar algumas anotações que permitem mapeamentos mais flexíveis. Por exemplo, podemos criar, com anotações, chaves-estrangeiras e tabelas de relacionamento. É possível ainda utilizar anotações para unir duas classes em uma única tabela. 
+
+Estes são os exemplos de algumas das principais anotações da JPA:
+- `@Entity`: Utilizada antes da declaração da classe, informa ao JPA que a ele deve ser gerenciada pelo contexto de persistência, e suas instâncias representam linhas da tabela.
+- `@Table(name = 'table_name')`: Utilizada antes da declaração da classe para indicar que ela será mapeada como uma tabela. O parâmetro "name" faz a conversão entre convenções de nomeação: _HungarianCase_ para classes e *snake_case* para tabelas de banco de dados. Permite ainda especificar outras configurações, como esquemas e restrições.
+- `@Column(name = 'column_name)`:  Utilizada antes da declaração de um atributo para indicar que ele será mapeado como uma coluna da tabela. O parâmetro "name" faz a conversão entre convenções de nomeação: *camelCase* para atributos e *snake_case* para colunas de banco de dados.
+- As anotações `@OneToOne`, `@OneToMany`, `@ManyToOne` e `@ManyToMany` servem para mapear atributos das classes como relacionamentos entre tabelas, sendo que mapeaiam, respectivamente, relacionamentos 1:1, 1:N, N:1 e N:N. Esses relacionamentos são implementados no modelo relacional por meio de chaves estrangeiras, e o nome do campo que armazenará a chave é declarado com a anotação `@JoinColumn(name = 'nome_chave_estrangeira')`.
+- `@Id` é  utilizada para indicar que um atributo é a chave primária de uma tabela, e costuma ser combinada com @GeneratedValue, que define a estratégia de geração do ID:
+    - `@GeneratedValue(strategy = GenerationType.AUTO)`: O JPA escolhe automaticamente a estratégia de geração de chave com base no banco de dados que está sendo utilizado.
+    - `@GeneratedValue(strategy = GenerationType.IDENTITY)`: O banco de dados controla a geração da chave primária, geralmente usando colunas AUTO_INCREMENT ou equivalentes.
+    - `@GeneratedValue(strategy = GenerationType.SEQUENCE)`: Usa uma sequência definida no banco de dados para gerar os IDs. Permite a geração de IDs antes da inserção (diferente de IDENTITY), o que é útil para algumas operações em lote.
+    - `@GeneratedValue(strategy = GenerationType.TABLE)`: Usa uma tabela específica no banco de dados para armazenar os IDs gerados, simulando o comportamento de uma sequência.
+
+Fontes:
+- https://jakarta.ee/learn/specification-guides/persistence-explained/
+- https://docs.spring.io/spring-data/jpa/reference/jpa.html
