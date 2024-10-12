@@ -62,7 +62,7 @@ Hoje, o _repository_ é o padrão mais utilizado em arquiteturas modernas, como 
 
 Como _server-side_ nossa aplicação está sendo desenvolvido em Spring Boot, estamos utilizando o framework **Spring Data JPA**, que simplifica a implementação da **Jakarta Persistence API (JPA)**. 
 
-### Jakarta Persistence API
+### Jakarta Persistence API (JPA)
 
 **Jakarta Persistence** é parte do **Jakarta EE**, uma série de especificações desenvolvidas originalmente pela Oracle e, posteriormente, pela Eclipse Foundation, para a produção de software comercial utilizando Java. O módulo de Persistence trata especificamente da gestão da     persistência de dados e do mapeamento do modelo orientado a objetos para o modelo relacional em ambientes Java.
 
@@ -84,3 +84,19 @@ Estes são os exemplos de algumas das principais anotações da JPA:
 Fontes:
 - https://jakarta.ee/learn/specification-guides/persistence-explained/
 - https://docs.spring.io/spring-data/jpa/reference/jpa.html
+
+### H2 Database
+
+Como mencionamos anteriormente, através da Spring Data JPA, podemos fazer alterações na base de dados sem afetar o servidor da aplicação: basta trocar as dependências do banco de dados no arquivo `pom.xml`.
+
+Por estarmos em uma fase preliminar do projeto, optamos por utilizaro H2, que é uma base de dados que vem embutido com o servidor do Spring Boot. A por ele é interessante nessa fase porque não requer nenhuma configuração ou instalação adicional. Para acessar a interface do H2, basta visitar o endereço http://localhost:8080/h2-console no navegador, e utilizar as credenciais de acesso salvas no arquivo `application.properties`.
+
+O H2 é uma base de dados relacional que utiliza SQL para executar as queries. Embora seja possível armazenar dados de forma persistente com o H2, no Spring Boot, ele vem com um armazenamento em memória RAM por padrão. Isto é, os dados não são salvos quando o servidor local é interrompido. Uma forma de garantir que a base de dados tenha pelo menos alguns registros para poder fazer os testes das operações de CRUD é salvar alguns comandos de insert dentro de um arquivo `database.sql`, que deve ser armazenado no diretório `src/main/resources`.
+
+### Credenciais de acesso e variáveis de ambiente
+
+Guardar as credenciais do banco de dados em um ambiente seguro e não fazer o upload delas no repositório é uma medida crítica de cyber segurança. Existem diversas abordagens para fazer isso, como utilizar um arquivo `.env` que salvar todas as informações sensíveis e que deve ser adicionado a um `.gitignore` para que seja utilizado somente localmente. No entanto, o uso do arquivo `.env` ou abordagens semelhantes ainda não é muito seguro, porque esse arquivo pode ser enviado para o repositório remoto acidentalmente.
+
+A forma mais segura de armazenar as credenciais do banco de dados é substituindo-as por algumas variáveis no `application.properties` e armazenando os seus valores nas variáveis de ambiente do sistema operacional ou da IDE.
+
+Planejamos adotar essa estratégia mais adiante, na ocasião de fazermos o deploy da aplicação.
