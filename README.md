@@ -54,6 +54,8 @@ Eu, como empresa, quero distribuir vantagens para alunos que tenham as moedas su
 
 ## Modelo Entidade Relacionamento
 
+<img src="./project/img/ModeloER.png">
+
 ## Definição e implementação da estratégia de acesso ao banco de dados
 
 No nosso projeto, optamos por utilizar o repositório (_repository_) como estratégia de acesso de banco de dados. O repository abstrai a manipulação dos dados, trazendo o foco para os objetos de domínio do negócio, desacoplando a camada de negócios da camada de persistência.
