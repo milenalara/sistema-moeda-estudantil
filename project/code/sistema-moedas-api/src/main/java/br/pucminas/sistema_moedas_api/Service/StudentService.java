@@ -70,6 +70,11 @@ public class StudentService {
     return newStudent;
   }
 
+  public Student update(StudentGetDTO student, Long id) {
+    Student updated = convertFromDTO(student);
+    return studentRepository.save(updated);
+  }
+
   private StudentGetDTO convertToDTO(Student student) {
     StudentGetCourseDTO course = new StudentGetCourseDTO(student.getId(), student.getCourse().getName());
     StudentGetEducationalInstitutionDTO educationalInstitution = new StudentGetEducationalInstitutionDTO(
@@ -83,6 +88,27 @@ public class StudentService {
         student.getRG(),
         educationalInstitution,
         course);
+  }
+
+  private Student convertFromDTO(StudentGetDTO studentDTO) {
+    EducationalInstitution educationalInstitution = educationalInstitutionRepository.findById(
+        studentDTO.educationalInstitution().id()).orElseThrow(
+        () -> new RuntimeException("Instituição de Ensino não encontrada"));
+
+    Course course = courseRepository.findById(
+        studentDTO.course().id()).orElseThrow(
+        () -> new RuntimeException("Curso não encontrado"));
+
+    Student student = new Student();
+    student.setId(studentDTO.id());
+    student.setName(studentDTO.name());
+    student.setEmail(studentDTO.email());
+    student.setCPF(studentDTO.CPF());
+    student.setRG(studentDTO.RG());
+    student.setEducationalInstitution(educationalInstitution);
+    student.setCourse(course);
+
+    return student;
   }
 
 }
