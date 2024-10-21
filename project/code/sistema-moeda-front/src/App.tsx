@@ -5,8 +5,10 @@ import Aluno from './components/aluno'
 import Home from './components/home'
 import Empresa from './components/empresa'
 import Admin from './components/admin'
+import Professor from './components/professor'
 import AdminAluno from './components/adminAluno'
 import AdminEmpresa from './components/adminEmpresa'
+import AdminProfessor from './components/adminProfessor'
 
 import {
   BrowserRouter as Router,
@@ -45,6 +47,14 @@ function App() {
           <Route
             path="/adminEmpresa"
             element={<AdminEmpresa />}
+          />
+          <Route
+            path="/adminProfessor"
+            element={<AdminProfessor />}
+          />
+          <Route
+            path="/professor"
+            element={<Professor />}
           />
         </Routes>
       </Router>

@@ -11,6 +11,8 @@ function Aluno() {
      <Link to="/adminAluno">Administrar alunos</Link>
     <br></br>
      <Link to="/adminEmpresa">Administrar empresas</Link>
+     <br />
+     <Link to="/adminProfessor">Administrar professor</Link>
     </>
   )
 }

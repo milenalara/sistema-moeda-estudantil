@@ -12,6 +12,8 @@ function home() {
       <Link to="/empresa">Entrar como empresa</Link>
       <br></br>
       <Link to="/admin">Entrar como administrador</Link>
+      <br />
+      <Link to="/professor">Entrar como professor</Link>
     </>
   )
 }

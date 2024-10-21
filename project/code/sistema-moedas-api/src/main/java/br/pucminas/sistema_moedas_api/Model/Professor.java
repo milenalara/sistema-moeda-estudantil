@@ -1,6 +1,8 @@
 package br.pucminas.sistema_moedas_api.Model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,15 +17,24 @@ import lombok.Setter;
 public class Professor {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(unique = true) 
   Long id;
+
+  @Column
   String name;
-  String CPF; // Cadastro de Pessoa Fisica = Natural Persons Register
+
+  @Column
+  String CPF; 
 
   @ManyToOne
-  @JoinColumn(name = "department_id", nullable = false)
-  Department department; // Departamento
+  @JoinColumn(name = "department_id", nullable = true)
+  Department department; 
 
-  @ManyToOne
-  @JoinColumn(name = "account_id", nullable = false)
-  Account account;
+  @Column
+  int saldo;
+
+  @Column(nullable = false, length = 100)
+  @NotBlank
+  @Size(min = 3, max = 100)
+  String password;
 }

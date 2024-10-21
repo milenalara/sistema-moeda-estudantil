@@ -26,6 +26,12 @@ public class Student {
   @Size(min = 3, max = 100)
   String name;
 
+
+  @Column(nullable = false, length = 100)
+  @NotBlank
+  @Size(min = 3, max = 100)
+  String password;
+
   @Column(nullable = false, length = 100)
   @Email
   @NotBlank
@@ -34,6 +40,10 @@ public class Student {
   @Column(name = "cpf", nullable = false, length = 11)
   @NotBlank
   String CPF; // Cadastro de Pessoa Fisica = Natural Persons Register
+
+  @Column
+  @NotBlank
+  int saldo;
 
   @Column(name = "rg", nullable = false, length = 9)
   @NotBlank

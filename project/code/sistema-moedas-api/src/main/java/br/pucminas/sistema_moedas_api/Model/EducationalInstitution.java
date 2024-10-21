@@ -22,8 +22,5 @@ public class EducationalInstitution {
   String name;
 
   @OneToMany(mappedBy = "educationalInstitution")
-  List<Department> departments;
-
-  @OneToMany(mappedBy = "educationalInstitution")
   List<Student> students;
 }
