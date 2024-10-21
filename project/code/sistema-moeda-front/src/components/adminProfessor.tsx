@@ -42,7 +42,6 @@ function adminProfessor() {
           <button onClick={() => deleteProfessor(professor.id)}>Deletar</button></>
         ))}
       </ul>
-w
     </>
   )
 }
