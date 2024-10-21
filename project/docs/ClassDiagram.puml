@@ -3,10 +3,12 @@
 
 Usuario <|-- Aluno
 Usuario <|-- Professor
-Usuario "1..1" *-- "1..1" Conta : pertence a
 Aluno "0..*" --* "1..1" InstituicaoEnsino
 Aluno -- Curso
-Aluno -- Vantagem
+Aluno "1..*"--* "0..*" Transação
+Transação "0..*" -- "0..*" Vantagem
+Professor "0..*" -- "0..*" Pagamento
+Pagamento "0..*" *-- "0..*" Aluno
 Professor "0..*" --* "1..1" InstituicaoEnsino
 Professor "0..*" --* "1..1" Departamento : pertence a
 Empresa "1..1" --o "0..*" Vantagem : oferece
@@ -25,6 +27,7 @@ class Aluno{
     - endereço: String
     - instituicaoEnsino: InstituicaoEnsino
     - curso: Curso
+    - saldo: Int
     + cadastrar() : void
     + trocarMoedas(Vantagem vantagem) : Boolean
 }
@@ -32,14 +35,11 @@ class Aluno{
 class Professor{
     - instituicaoEnsino : InstituicaoEnsino
     - departamento : Departamento
+    - saldo: Int
     + atribuirMoedas(Aluno aluno): String
 }
 
-class Conta{
-    - saldo: Double
-    + consultarExtrato() : String
-    + consultarSaldo() : Double
-}
+
 
 class Empresa{}
 class InstituicaoEnsino{}
