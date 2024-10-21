@@ -38,7 +38,6 @@ function adminAluno() {
     await axios.post('http://localhost:8080/api/student', newAluno)
   }
   const deleteAluno = async (id) => {
-    console.log(id);
     
     await axios.delete(`http://localhost:8080/api/student/delete/${id}`)}
   

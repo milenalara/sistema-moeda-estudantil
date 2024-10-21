@@ -4,5 +4,6 @@ public record ProfessorGetDTO(
                 Long id,
                 String name,
                 String password,
+                int saldo,
                 ProfessorGetDepartmentDTO department) {
 }

@@ -6,6 +6,7 @@ import Home from './components/home'
 import Empresa from './components/empresa'
 import Admin from './components/admin'
 import Professor from './components/professor'
+import ProfessorLogin from './components/professorLogin'
 import AdminAluno from './components/adminAluno'
 import AdminEmpresa from './components/adminEmpresa'
 import AdminProfessor from './components/adminProfessor'
@@ -54,7 +55,12 @@ function App() {
           />
           <Route
             path="/professor"
-            element={<Professor />}
+            element={<Professor />
+            }
+          />
+            <Route
+            path="/professorLogin"
+            element={<ProfessorLogin />}
           />
         </Routes>
       </Router>

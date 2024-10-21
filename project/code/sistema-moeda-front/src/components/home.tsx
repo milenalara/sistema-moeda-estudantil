@@ -13,7 +13,7 @@ function home() {
       <br></br>
       <Link to="/admin">Entrar como administrador</Link>
       <br />
-      <Link to="/professor">Entrar como professor</Link>
+      <Link to="/professorLogin">Entrar como professor</Link>
     </>
   )
 }

@@ -35,6 +35,7 @@ function adminProfessor() {
   return (
     <>
 
+      <button>Simular passar semestre</button>
       <h2>Professores:</h2>
       <ul>
         {professors.map((professor) => (
