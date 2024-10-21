@@ -5,13 +5,8 @@ import br.pucminas.sistema_moedas_api.DTO.StudentGetDTO;
 import br.pucminas.sistema_moedas_api.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -42,5 +37,11 @@ public class StudentController {
   public ResponseEntity<StudentGetDTO> deleteStudent(@PathVariable("id") long id) {
       StudentGetDTO student = studentService.deleteById(id);
       return ResponseEntity.ok().body(student);
+  }
+
+  @PutMapping("/update/{id}")
+  public ResponseEntity<Void> update(@RequestBody StudentGetDTO student, @PathVariable("id") Long id) {
+    studentService.update(student, id);
+    return ResponseEntity.noContent().build();
   }
 }
