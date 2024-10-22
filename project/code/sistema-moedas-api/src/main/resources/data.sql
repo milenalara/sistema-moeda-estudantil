@@ -96,11 +96,11 @@ VALUES ('ADMINISTRACAO'),
        ('TECNOLOGIA_EM_SEGURANCA_DA_INFORMACAO'),
        ('TEOLOGIA');
 
-INSERT INTO professor (name, cpf, department_id, saldo, password) 
+INSERT INTO professor (name, cpf, department_id, balance, password)
 VALUES ('Professor 1', '12345678901', 1, 0, 'default');
 
 
-INSERT INTO student (name, email, cpf, rg, educational_institution_id, course_id, saldo, password)
+INSERT INTO student (name, email, cpf, rg, educational_institution_id, course_id, balance, password)
 VALUES ('Lucas Almeida', 'lucas.almeida@example.com', '12345678901', 'MG1234567', 1, 5, 0, 'default'),
        ('Ana Beatriz Souza', 'ana.souza@example.com', '23456789012', 'MG2345678', 2, 12, 0, 'default'),
        ('Pedro Henrique Santos', 'pedro.santos@example.com', '34567890123', 'MG3456789', 3, 20, 0, 'default'),

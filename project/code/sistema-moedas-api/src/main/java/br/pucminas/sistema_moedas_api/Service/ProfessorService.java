@@ -68,7 +68,7 @@ public class ProfessorService {
         professor.getId(),
         professor.getName(),
         professor.getPassword(),
-        professor.getSaldo(),
+        professor.getBalance(),
         department);
   }
 

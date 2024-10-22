@@ -31,7 +31,7 @@ public class Professor {
   Department department; 
 
   @Column
-  int saldo;
+  int balance;
 
   @Column(nullable = false, length = 100)
   @NotBlank

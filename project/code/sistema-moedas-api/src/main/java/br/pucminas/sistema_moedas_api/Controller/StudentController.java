@@ -2,6 +2,7 @@ package br.pucminas.sistema_moedas_api.Controller;
 
 import br.pucminas.sistema_moedas_api.DTO.StudentCreateDTO;
 import br.pucminas.sistema_moedas_api.DTO.StudentGetDTO;
+import br.pucminas.sistema_moedas_api.DTO.StudentUpdateDTO;
 import br.pucminas.sistema_moedas_api.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,8 +40,8 @@ public class StudentController {
       return ResponseEntity.ok().body(student);
   }
 
-  @PutMapping("/update/{id}")
-  public ResponseEntity<Void> update(@RequestBody StudentGetDTO student, @PathVariable("id") Long id) {
+  @PutMapping("/{id}")
+  public ResponseEntity<Void> update(@RequestBody StudentUpdateDTO student, @PathVariable("id") Long id) {
     studentService.update(student, id);
     return ResponseEntity.noContent().build();
   }
