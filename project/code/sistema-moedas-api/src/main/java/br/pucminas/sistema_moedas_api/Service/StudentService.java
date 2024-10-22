@@ -103,6 +103,7 @@ public class StudentService {
         student.getEmail(),
         student.getCPF(),
         student.getRG(),
+        student.getSaldo(),
         educationalInstitution,
         course);
   }

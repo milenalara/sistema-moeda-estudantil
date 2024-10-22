@@ -6,6 +6,7 @@ public record StudentGetDTO(
     String email,
     String CPF,
     String RG,
+    int saldo,
     StudentEducationalInstitutionDTO educationalInstitution,
     StudentCourseDTO course) {
 }
