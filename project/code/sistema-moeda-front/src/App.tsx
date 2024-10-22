@@ -10,6 +10,7 @@ import ProfessorLogin from './components/professorLogin'
 import AdminAluno from './components/adminAluno'
 import AdminEmpresa from './components/adminEmpresa'
 import AdminProfessor from './components/adminProfessor'
+import EditStudentPage from './pages/EditStudentPage'
 
 import {
   BrowserRouter as Router,
@@ -58,9 +59,13 @@ function App() {
             element={<Professor />
             }
           />
-            <Route
+          <Route
             path="/professorLogin"
             element={<ProfessorLogin />}
+          />
+          <Route
+            path="/estudante/editar/:id"
+            element={<EditStudentPage />}
           />
         </Routes>
       </Router>
