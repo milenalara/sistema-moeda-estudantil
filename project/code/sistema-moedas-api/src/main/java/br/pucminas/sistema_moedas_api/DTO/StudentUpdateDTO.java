@@ -6,8 +6,6 @@ public record StudentUpdateDTO (
     String email,
     String CPF,
     String RG,
-    Integer balance,
-    StudentEducationalInstitutionDTO educationalInstitution,
-    StudentCourseDTO course
+    Integer balance
 ){
 }

@@ -6,7 +6,7 @@ import axios from 'axios';
 function adminAluno() {
   const [count, setCount] = useState(0)
   const [alunos, setAlunos] = useState([])
-  const [newAluno, setAluno] = useState({name: '', email: '', CPF: '', RG: '', educationalInstitutionId: 0, courseId: 0})
+  const [newAluno, setAluno] = useState({name: '', email: '', CPF: '', RG: '',balance: 0,password: 'default', educationalInstitutionId: 0, courseId: 0})
 
   useEffect(() => {
     getAlunos();

@@ -5,6 +5,8 @@ public record StudentCreateDTO(
     String email,
     String CPF,
     String RG,
+    Integer balance, 
+    String password,
     Long educationalInstitutionId,
     Long courseId
 ) {

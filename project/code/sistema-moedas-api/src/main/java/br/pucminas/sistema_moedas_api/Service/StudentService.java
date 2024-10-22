@@ -60,6 +60,8 @@ public class StudentService {
     newStudent.setEmail(student.email());
     newStudent.setCPF(student.CPF());
     newStudent.setRG(student.RG());
+    newStudent.setBalance(student.balance());
+    newStudent.setPassword(student.password());
     newStudent.setCourse(course);
     newStudent.setEducationalInstitution(educationalInstitution);
 
@@ -72,22 +74,12 @@ public class StudentService {
     Student student = studentRepository.findById(id)
         .orElseThrow(()-> new RuntimeException("Estudante não encontrado"));
 
-    EducationalInstitution educationalInstitution = educationalInstitutionRepository.findById(
-        studentDTO.educationalInstitution().id()).orElseThrow(
-        () -> new RuntimeException("Instituição de Ensino não encontrada"));
-
-    Course course = courseRepository.findById(
-        studentDTO.course().id()).orElseThrow(
-        () -> new RuntimeException("Curso não encontrado"));
-
     student.setName(studentDTO.name());
     student.setPassword(studentDTO.password());
     student.setEmail(studentDTO.email());
     student.setCPF(studentDTO.CPF());
     student.setRG(studentDTO.RG());
     student.setBalance(studentDTO.balance());
-    student.setEducationalInstitution(educationalInstitution);
-    student.setCourse(course);
 
     return studentRepository.save(student);
   }
@@ -103,7 +95,8 @@ public class StudentService {
         student.getEmail(),
         student.getCPF(),
         student.getRG(),
-        student.getSaldo(),
+        student.getBalance(),
+        student.getPassword(),
         educationalInstitution,
         course);
   }
