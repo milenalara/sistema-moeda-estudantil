@@ -7,7 +7,6 @@ public record StudentUpdateDTO (
     String CPF,
     String RG,
     Integer balance,
-    StudentEducationalInstitutionDTO educationalInstitution,
-    StudentCourseDTO course
-){
+    Long educationalInstitutionId,
+    Long courseId){
 }

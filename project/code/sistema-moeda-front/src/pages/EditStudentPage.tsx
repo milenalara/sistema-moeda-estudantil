@@ -22,6 +22,17 @@ interface IEducationalInstitution {
   name: string;
 }
 
+interface IUpdatedStudent {
+  name: string;
+  password: string;
+  email: string;
+  CPF: string;
+  RG: string;
+  balance: number;
+  educationalInstitutionId: number;
+  courseId: number;
+}
+
 interface ICourse {
   id: number;
   name: string;
@@ -30,11 +41,12 @@ interface ICourse {
 const EditStudentPage = () => {
   const { id } = useParams<{ id: string }>();
   const [student, setStudent] = useState<IStudent | null>(null);
+  const [updatedStudent, setUpdatedStudent]= useState<IUpdatedStudent | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchStudent = async () => {
+    const fetchStudents = async () => {
       try {
         const response = await axios.get<IStudent>(
           `http://localhost:8080/api/student/${id}`
@@ -47,7 +59,7 @@ const EditStudentPage = () => {
       }
     };
 
-    fetchStudent();
+    fetchStudents();
   }, [id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,11 +73,22 @@ const EditStudentPage = () => {
 
   const handleSave = async () => {
     if (student) {
+      const updatedStudent = {
+        name: student.name,
+        password: student.password,
+        email: student.email,
+        CPF: student.CPF,
+        RG: student.RG,
+        balance: student.balance,
+        educationalInstitutionId: student.educationalInstitution.id,
+        courseId: student.course.id
+      }
+
       try {
-        await axios.put(`http://localhost:8080/api/student/${id}`, student, {
+        await axios.put(`http://localhost:8080/api/student/${id}`, updatedStudent, {
           headers: {
-            "Content-Type": "application/json",
-          },
+            'Content-Type': 'application/json'
+          }
         });
         alert("Dados do(a) aluno(a) atualizados com sucesso");
       } catch (err: any) {
@@ -89,7 +112,7 @@ const EditStudentPage = () => {
           required
           id="name"
           label="Nome"
-          value={student?.name || ""}
+          defaultValue={student?.name || ""}
           onChange={handleChange}
         />
       </div>
@@ -97,8 +120,9 @@ const EditStudentPage = () => {
         <TextField
           required
           id="password"
-          label="Password"
-          value={student?.password || ""}
+          type="password"
+          label="Senha"
+          defaultValue={student?.password || ""}
           onChange={handleChange}
         />
       </div>
@@ -107,25 +131,25 @@ const EditStudentPage = () => {
           required
           id="email"
           label="E-mail"
-          value={student?.email || ""}
+          defaultValue={student?.email || ""}
           onChange={handleChange}
         />
       </div>
       <div>
         <TextField
           required
-          id="CPF"
+          id="cpf"
           label="CPF"
-          value={student?.CPF || ""}
+          defaultValue={student?.CPF || ""}
           onChange={handleChange}
         />
       </div>
       <div>
         <TextField
           required
-          id="RG"
+          id="rg"
           label="RG"
-          value={student?.RG || ""}
+          defaultValue={student?.RG || ""}
           onChange={handleChange}
         />
       </div>
@@ -133,26 +157,26 @@ const EditStudentPage = () => {
         <TextField
           required
           id="balance"
-          label="Balance"
-          value={student?.balance || 0}
+          label="balance"
+          defaultValue={student?.balance || ""}
           onChange={handleChange}
         />
       </div>
       <div>
         <TextField
           required
-          id="educationalInstitutionId"
+          id="educational-institution"
           label="Instituição de Ensino"
-          value={student?.educationalInstitution.name || ""}
+          defaultValue={student?.educationalInstitution.name || ""}
           onChange={handleChange}
         />
       </div>
       <div>
         <TextField
           required
-          id="courseId"
+          id="course"
           label="Curso"
-          value={student?.course.id || ""}
+          defaultValue={student?.course.name || ""}
           onChange={handleChange}
         />
       </div>
