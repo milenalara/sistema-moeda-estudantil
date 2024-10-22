@@ -7,7 +7,6 @@ import br.pucminas.sistema_moedas_api.DTO.ProfessorUpdateDTO;
 import br.pucminas.sistema_moedas_api.Model.Department;
 import br.pucminas.sistema_moedas_api.Model.Professor;
 import br.pucminas.sistema_moedas_api.Repository.ProfessorRepository;
-import br.pucminas.sistema_moedas_api.Repository.CourseRepository;
 import br.pucminas.sistema_moedas_api.Repository.DepartmentRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

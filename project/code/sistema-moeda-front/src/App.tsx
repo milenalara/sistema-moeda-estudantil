@@ -7,6 +7,7 @@ import Empresa from './components/empresa'
 import Admin from './components/admin'
 import Professor from './components/professor'
 import ProfessorLogin from './components/professorLogin'
+import ProfessorHistory from './components/professorHistory'
 import AdminAluno from './components/adminAluno'
 import AdminEmpresa from './components/adminEmpresa'
 import AdminProfessor from './components/adminProfessor'
@@ -62,6 +63,10 @@ function App() {
           <Route
             path="/professorLogin"
             element={<ProfessorLogin />}
+          />
+            <Route
+            path="/professorHistory"
+            element={<ProfessorHistory />}
           />
           <Route
             path="/estudante/editar/:id"

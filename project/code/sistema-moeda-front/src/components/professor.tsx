@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { Password } from '@mui/icons-material';
 
@@ -7,7 +7,9 @@ function Professor(id: number) {
   const [count, setCount] = useState(0)
   const [professor, setProfessor] = useState([])
   const [alunos, setAlunos] = useState([])
+  const [pagamentos, setPagamentos] = useState([])
   const [moedasDoar, setMoedas] = useState({ moedas: 0 })
+  const navigate = useNavigate();
 
   const location = useLocation();
 
@@ -29,6 +31,10 @@ function Professor(id: number) {
     const res = await axios.get('http://localhost:8080/api/student')
     setAlunos(res.data)
   }
+
+  const goToHistory=(id: number)=>{
+    navigate('/professorHistory',{state:{id}});
+      }
 
   const doarAluno = async (aluno) => {
     if(professor.balance<moedasDoar.moedas){
@@ -61,6 +67,15 @@ function Professor(id: number) {
 
     const resProf = await axios.put(`http://localhost:8080/api/professor/${professor.id}`, professor)
 
+    const pagamento = {
+      date: new Date().toDateString(),
+      cost: moedasDoar.moedas,
+      professorId: professor.id,
+      studentId: aluno.id
+    }
+
+    const resPay = await axios.post(`http://localhost:8080/api/payment`, pagamento)
+
     getAlunos()
     getProfessor()
   }
@@ -71,6 +86,8 @@ function Professor(id: number) {
   return (
     <>
       <h1>Hello professor {professor.name}</h1>
+
+      <button onClick={() => goToHistory(professor.id)}>Historico</button>
 
       <h2>Saldo: {professor.balance}</h2>
 
