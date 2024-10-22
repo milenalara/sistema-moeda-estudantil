@@ -12,7 +12,7 @@ function Professor(id: number) {
   const location = useLocation();
 
   const handleMoedasDoarChange = (e) => {
-    setMoedas({ ...moedasDoar, moedas: e.target.value });
+    setMoedas({ ...moedasDoar, moedas: e.target.value })
   }
 
   useEffect(() => {
@@ -31,7 +31,18 @@ function Professor(id: number) {
   }
 
   const doarAluno = async (aluno) => {
+    if(professor.balance<moedasDoar.moedas){
+      console.log('moedas insuficientes');
+      return
+    }
+    if(moedasDoar.moedas == 0){
+      console.log('favor doar moedas');
+      
+      return 
+    }
 
+    aluno.balance = Number(aluno.balance) + Number(moedasDoar.moedas)
+    
     const newAluno = {
 
       name: aluno.name,
@@ -39,13 +50,22 @@ function Professor(id: number) {
       CPF: aluno.CPF,
       RG: aluno.RG,
       password: aluno.password,
-      balance: aluno.balance + moedasDoar.moedas
+      balance: aluno.balance
 
     }
 
-    const res = await axios.put('http://localhost:8080/api/student/' + aluno.id, newAluno)
+    const res = await axios.put(`http://localhost:8080/api/student/${aluno.id}` , newAluno)
 
+    professor.balance -= moedasDoar.moedas
+    delete professor.departmentId
+
+    const resProf = await axios.put(`http://localhost:8080/api/professor/${professor.id}`, professor)
+
+    getAlunos()
+    getProfessor()
   }
+    
+  
 
 
   return (
@@ -55,7 +75,7 @@ function Professor(id: number) {
       <h2>Saldo: {professor.balance}</h2>
 
       Quantidade de moedas a ser doada:
-      <input type="number" name="meadas" id="moedas" value={moedasDoar.moedas} onChange={handleMoedasDoarChange} />
+      <input type="number" name="meadas" id="moedas" value={moedasDoar.moedas} onChange={handleMoedasDoarChange} max={professor.balance}/>
 
       <h2>Alunos:</h2>
       <ul>
@@ -68,5 +88,6 @@ function Professor(id: number) {
     </>
   )
 }
+
 
 export default Professor;
