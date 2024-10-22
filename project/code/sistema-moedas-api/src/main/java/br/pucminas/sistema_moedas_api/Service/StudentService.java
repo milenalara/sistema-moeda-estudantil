@@ -69,15 +69,20 @@ public class StudentService {
 
   @Transactional
   public Student update(StudentUpdateDTO studentDTO, Long id) {
+    Student student = convertFromDTO(studentDTO, id);
+    return studentRepository.save(student);
+  }
+
+  private Student convertFromDTO (StudentUpdateDTO studentDTO, Long id) {
     Student student = studentRepository.findById(id)
         .orElseThrow(()-> new RuntimeException("Estudante não encontrado"));
 
     EducationalInstitution educationalInstitution = educationalInstitutionRepository.findById(
-        studentDTO.educationalInstitution().id()).orElseThrow(
+        studentDTO.educationalInstitutionId()).orElseThrow(
         () -> new RuntimeException("Instituição de Ensino não encontrada"));
 
     Course course = courseRepository.findById(
-        studentDTO.course().id()).orElseThrow(
+        studentDTO.courseId()).orElseThrow(
         () -> new RuntimeException("Curso não encontrado"));
 
     student.setName(studentDTO.name());
@@ -89,7 +94,7 @@ public class StudentService {
     student.setEducationalInstitution(educationalInstitution);
     student.setCourse(course);
 
-    return studentRepository.save(student);
+    return student;
   }
 
   private StudentGetDTO convertToDTO(Student student) {
