@@ -11,7 +11,9 @@ import ProfessorHistory from './components/professorHistory'
 import AdminAluno from './components/adminAluno'
 import AdminEmpresa from './components/adminEmpresa'
 import AdminProfessor from './components/adminProfessor'
-import EditStudentPage from './pages/EditStudentPage'
+// import EditStudentPage from './pages/EditStudentPage'
+import AdminAlunoEdit from './components/adminAlunoEdit'
+import AdminEmpresaEdit from './components/adminEmpresaEdit'
 
 import {
   BrowserRouter as Router,
@@ -68,9 +70,13 @@ function App() {
             path="/professorHistory"
             element={<ProfessorHistory />}
           />
+          <Route 
+            path="/adminAlunoEdit/:id" 
+            element={<AdminAlunoEdit />} 
+          />
           <Route
-            path="/estudante/editar/:id"
-            element={<EditStudentPage />}
+            path="/adminEmpresa/edit/:id"
+            element={<AdminEmpresaEdit />}
           />
         </Routes>
       </Router>
