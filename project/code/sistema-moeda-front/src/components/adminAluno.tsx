@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
-
 function adminAluno() {
   const [count, setCount] = useState(0)
   const [alunos, setAlunos] = useState([])
-  const [newAluno, setAluno] = useState({name: '', email: '', CPF: '', RG: '',balance: 0,password: 'default', educationalInstitutionId: 0, courseId: 0})
+  const [newAluno, setAluno] = useState({name: '', email: '', CPF: '', RG: '', educationalInstitutionId: 0, courseId: 0})
 
   useEffect(() => {
     getAlunos();
@@ -38,8 +37,9 @@ function adminAluno() {
     await axios.post('http://localhost:8080/api/student', newAluno)
   }
   const deleteAluno = async (id) => {
-    
-    await axios.delete(`http://localhost:8080/api/student/delete/${id}`)}
+    console.log(id);
+    await axios.delete(`http://localhost:8080/api/student/delete/${id}`)
+  }
   
   return (
     <>
@@ -48,8 +48,13 @@ function adminAluno() {
       <h2>Alunos:</h2>
       <ul>
         {alunos.map((aluno) => (
-          <><li key={aluno.name}>{aluno.name}</li>
-          <button onClick={() => deleteAluno(aluno.id)}>Deletar</button></>
+          <li key={aluno.name}>
+            {aluno.name} 
+            <button onClick={() => deleteAluno(aluno.id)}>Deletar</button>
+            <Link to={`/adminAlunoEdit/${aluno.id}`}>
+              <button>Editar</button>
+            </Link>
+          </li>
         ))}
       </ul>
 
@@ -66,8 +71,6 @@ function adminAluno() {
       <input type="number" name="aluno institution" id="institution" value={newAluno.educationalInstitutionId} onChange={handleInstitutionChange} />
       ID curso:
       <input type="number" name="aluno course" id="course" value={newAluno.courseId} onChange={handleCourseChange} />
-
-
 
       <button onClick={createAluno}>Salvar aluno</button>
       <button onClick={getAlunos}>Recarregar alunos</button>
