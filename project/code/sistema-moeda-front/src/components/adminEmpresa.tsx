@@ -37,8 +37,13 @@ function adminEmpresa() {
       <h2>Empresas:</h2>
       <ul>
         {companies.map((company) => (
-          <><li key={company.name}>{company.name}</li>
-          <button onClick={() => deleteCompany(company.id)}>Deletar</button></>
+          <li key={company.id}>
+            {company.name}
+              <button onClick={() => deleteCompany(company.id)}>Deletar</button>
+            <Link to={`/adminEmpresa/edit/${company.id}`}>
+            <button>Editar</button>
+            </Link>
+          </li>
         ))}
       </ul>
 
