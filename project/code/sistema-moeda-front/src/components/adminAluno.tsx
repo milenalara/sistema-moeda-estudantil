@@ -5,7 +5,7 @@ import axios from 'axios';
 function adminAluno() {
   const [count, setCount] = useState(0)
   const [alunos, setAlunos] = useState([])
-  const [newAluno, setAluno] = useState({name: '', email: '', CPF: '', RG: '', educationalInstitutionId: 0, courseId: 0})
+  const [newAluno, setAluno] = useState({name: '', email: '', CPF: '', RG: '', educationalInstitutionId: 0, courseId: 0, password:'default', balance:0})
 
   useEffect(() => {
     getAlunos();
@@ -35,10 +35,11 @@ function adminAluno() {
   }
   const createAluno = async () => {
     await axios.post('http://localhost:8080/api/student', newAluno)
+    getAlunos()
   }
   const deleteAluno = async (id) => {
-    console.log(id);
     await axios.delete(`http://localhost:8080/api/student/delete/${id}`)
+    getAlunos()
   }
   
   return (
