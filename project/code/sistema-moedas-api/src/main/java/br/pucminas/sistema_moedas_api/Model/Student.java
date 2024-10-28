@@ -45,7 +45,7 @@ public class Student {
 
   @Column
   @NotNull
-  Integer balance; // balance
+  Integer balance; // Saldo
 
   @Column(name = "rg", nullable = false, length = 9)
   @NotBlank

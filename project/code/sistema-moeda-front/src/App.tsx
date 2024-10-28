@@ -5,15 +5,16 @@ import Aluno from './components/aluno'
 import Home from './components/home'
 import Empresa from './components/empresa'
 import Admin from './components/admin'
-import Professor from './components/professor'
+import Professor from './components/Professor'
 import ProfessorLogin from './components/professorLogin'
 import ProfessorHistory from './components/professorHistory'
 import AdminAluno from './components/adminAluno'
 import AdminEmpresa from './components/adminEmpresa'
 import AdminProfessor from './components/adminProfessor'
-// import EditStudentPage from './pages/EditStudentPage'
+import EditStudentPage from './pages/EditStudentPage'
 import AdminAlunoEdit from './components/adminAlunoEdit'
 import AdminEmpresaEdit from './components/adminEmpresaEdit'
+import AdminStudentPage from './pages/AdminStudentPage'
 
 import {
   BrowserRouter as Router,
@@ -57,19 +58,19 @@ function App() {
             path="/adminProfessor"
             element={<AdminProfessor />}
           />
-          <Route
+          {/* <Route
             path="/professor"
             element={<Professor />
             }
-          />
+          /> */}
           <Route
             path="/professorLogin"
             element={<ProfessorLogin />}
           />
-            <Route
+            {/* <Route
             path="/professorHistory"
             element={<ProfessorHistory />}
-          />
+          /> */}
           <Route 
             path="/adminAlunoEdit/:id" 
             element={<AdminAlunoEdit />} 
@@ -77,6 +78,10 @@ function App() {
           <Route
             path="/adminEmpresa/edit/:id"
             element={<AdminEmpresaEdit />}
+          />
+          <Route
+            path="/admin/estudantes"
+            element={<AdminStudentPage />}
           />
         </Routes>
       </Router>
