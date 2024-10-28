@@ -51,6 +51,22 @@ public class AdvantageService {
     return newAdvantage;
   }
 
+  @Transactional
+  public Advantage update(AdvantageCreateDTO advantageDTO, Long id) {
+    Advantage advantage = advantageRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Vantagem não encontrado"));
+
+    Company company = companyRepository
+        .findById(advantageDTO.companyId()).orElseThrow(() -> new RuntimeException("Company not found"));
+
+    advantage.setName(advantageDTO.name());
+    advantage.setDescription(advantageDTO.description());
+    advantage.setCost(advantageDTO.cost());
+    advantage.setCompany(company);
+
+    return advantageRepository.save(advantage);
+  }
+
   private AdvantageGetDTO convertToDTO(Advantage advantage) {
     AdvantageGetCompanyDTO company = new AdvantageGetCompanyDTO(advantage.getId(), advantage.getCompany().getName());
 

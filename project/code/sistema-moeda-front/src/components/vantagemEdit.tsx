@@ -27,6 +27,7 @@ function vantagemEdit() {
 
   const handleSave = async () => {
     try {
+      advantage.companyId=advantage.companyId.id;
       await axios.put(`http://localhost:8080/api/advantage/update/${id}`, advantage);
       navigate('/empresa', { state: { id } });
     } catch (error) {
