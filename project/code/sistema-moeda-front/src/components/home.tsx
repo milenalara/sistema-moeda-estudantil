@@ -9,7 +9,7 @@ function home() {
       <h1>Página home</h1>
       <Link to="/aluno">Entrar como aluno</Link>
       <br></br>
-      <Link to="/empresa">Entrar como empresa</Link>
+      <Link to="/empresaLogin">Entrar como empresa</Link>
       <br></br>
       <Link to="/admin">Entrar como administrador</Link>
       <br />

@@ -2,6 +2,7 @@ package br.pucminas.sistema_moedas_api.Controller;
 
 import br.pucminas.sistema_moedas_api.DTO.AdvantageCreateDTO;
 import br.pucminas.sistema_moedas_api.DTO.AdvantageGetDTO;
+import br.pucminas.sistema_moedas_api.DTO.CompanyGetDTO;
 import br.pucminas.sistema_moedas_api.DTO.AdvantageGetDTO;
 import br.pucminas.sistema_moedas_api.Service.AdvantageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,12 @@ public class AdvantageController {
   public ResponseEntity<List<AdvantageGetDTO>> findAll() {
     List<AdvantageGetDTO> advantages = advantageService.findAll();
     return ResponseEntity.ok().body(advantages);
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<AdvantageGetDTO> findById(@PathVariable Long id) {
+    AdvantageGetDTO advantage = advantageService.findById(id);
+    return ResponseEntity.ok().body(advantage);
   }
 
   @PostMapping

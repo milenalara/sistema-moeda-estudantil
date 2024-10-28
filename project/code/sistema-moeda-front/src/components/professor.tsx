@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { Password } from '@mui/icons-material';
 
 function Professor(id: number) {
   const [count, setCount] = useState(0)
