@@ -74,7 +74,6 @@ function adminAluno() {
       <input type="number" name="aluno course" id="course" value={newAluno.courseId} onChange={handleCourseChange} />
 
       <button onClick={createAluno}>Salvar aluno</button>
-      <button onClick={getAlunos}>Recarregar alunos</button>
     </>
   )
 }

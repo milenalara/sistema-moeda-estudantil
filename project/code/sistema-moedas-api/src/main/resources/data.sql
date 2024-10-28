@@ -13,6 +13,8 @@ VALUES ('18.123.456/0001-95', 'Pontifícia Universidade Católica de Minas Gerai
        ('92.345.678/0001-88', 'Escola Superior Dom Helder Câmara'),
        ('10.876.543/0001-99', 'Faculdade Senac Minas');
 
+INSERT INTO company (name ,password)
+VALUES ('Empresa 1', '1234'),('Empresa 2', '1234'),('Empresa 3', '1234'),('Empresa 4', '1234');
 
 INSERT INTO department (name)
 VALUES ('Departamento 1'),
