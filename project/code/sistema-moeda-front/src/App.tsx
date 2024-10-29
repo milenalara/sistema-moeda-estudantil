@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './index.css'
 import MyComponent from './pages/MyComponent'
 import Aluno from './components/aluno'
+import AlunoHistory from './components/alunoHistory'
 import Home from './components/home'
 import Empresa from './components/empresa'
 import Admin from './components/admin'
@@ -38,6 +39,10 @@ function App() {
           <Route
             path="/aluno"
             element={<Aluno />}
+          />
+          <Route
+            path="/alunoHistory"
+            element={<AlunoHistory />}
           />
           <Route
             path="/adminAluno"
