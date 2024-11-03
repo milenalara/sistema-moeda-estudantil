@@ -1,5 +1,7 @@
 package br.pucminas.sistema_moedas_api.Model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -37,4 +39,7 @@ public class Professor {
   @NotBlank
   @Size(min = 3, max = 100)
   String password;
+
+  @OneToMany(mappedBy = "professor")
+  List<Payment> payments;
 }

@@ -1,5 +1,6 @@
 package br.pucminas.sistema_moedas_api.Model;
 
+import java.util.List;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -31,5 +32,8 @@ public class Company { // empresa
     @NotBlank
     @Size(min = 3, max = 100)
     String password;
+
+    @OneToMany(mappedBy = "company")
+    List<Advantage> advantages;
 
 }

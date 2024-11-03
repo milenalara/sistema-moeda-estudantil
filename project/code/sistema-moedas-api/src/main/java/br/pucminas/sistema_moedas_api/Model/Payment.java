@@ -9,15 +9,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
-@Table(name="advantage")
+@Table(name = "payment")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Advantage { 
-
+public class Payment {
+  
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(unique = true)
@@ -26,19 +25,18 @@ public class Advantage {
   @Column(nullable = false, length = 100)
   @NotBlank
   @Size(min = 3, max = 100)
-  String name;
+  String date;
 
   @Column
   @NotNull
   Integer cost; 
 
-  @Column(nullable = false, length = 100)
-  @NotBlank
-  @Size(min = 3, max = 100)
-  String description;
+  @ManyToOne
+  @JoinColumn(name = "professor_id", nullable = false)
+  Professor professor; 
 
   @ManyToOne
-  @JoinColumn(name = "company_id", nullable = false)
-  Company company; 
+  @JoinColumn(name = "student_id", nullable = false)
+  Student student;
 
 }

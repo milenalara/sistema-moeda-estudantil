@@ -1,5 +1,7 @@
 package br.pucminas.sistema_moedas_api.Model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -56,4 +58,7 @@ public class Student {
   @ManyToOne
   @JoinColumn(name = "course_id", nullable = false)
   Course course; // Curso
+
+  @OneToMany(mappedBy = "student")
+  List<Payment> payments;
 }

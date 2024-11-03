@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Link } from "react-router-dom";
 import axios from 'axios';
 
 
 function adminProfessor() {
   const [count, setCount] = useState(0)
   const [professors, setProfessors] = useState([])
-  const [newProfessor, setProfessor] = useState({name: '', CPF: '', departamentId:1, password: 'default'})
+  const [newProfessor, setProfessor] = useState({name: '', CPF: '', departamentId: 1, password: 'default', balance:0})
 
   useEffect(() => {
     getProfessors();
@@ -25,17 +24,24 @@ function adminProfessor() {
     const res = await axios.get('http://localhost:8080/api/professor')
     setProfessors(res.data)
   }
-  const createProfessor = async () => {
-    await axios.post('http://localhost:8080/api/professor', newProfessor)
-  }
-  const deleteProfessor = async (id) => {
+  const deleteProfessor = async (id: number) => {
     
     await axios.delete(`http://localhost:8080/api/professor/delete/${id}`)}
+
+  const updateSemester = async () => {
+    professors.forEach(async professor => {
+      professor.balance += 100;
+      delete professor.departmentId;
+      const res = await axios.put(`http://localhost:8080/api/professor/${professor.id}`, professor)
+    });
+
+
+  }
   
   return (
     <>
 
-      <button>Simular passar semestre</button>
+      <button onClick={() => updateSemester()}>Simular passar semestre (+100 moedas para todos profs)</button>
       <h2>Professores:</h2>
       <ul>
         {professors.map((professor) => (

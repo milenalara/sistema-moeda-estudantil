@@ -3,11 +3,10 @@ package br.pucminas.sistema_moedas_api.Service;
 import br.pucminas.sistema_moedas_api.DTO.ProfessorCreateDTO;
 import br.pucminas.sistema_moedas_api.DTO.ProfessorGetDTO;
 import br.pucminas.sistema_moedas_api.DTO.ProfessorGetDepartmentDTO;
-import br.pucminas.sistema_moedas_api.Model.Department;
+import br.pucminas.sistema_moedas_api.DTO.ProfessorUpdateDTO;
 import br.pucminas.sistema_moedas_api.Model.Department;
 import br.pucminas.sistema_moedas_api.Model.Professor;
 import br.pucminas.sistema_moedas_api.Repository.ProfessorRepository;
-import br.pucminas.sistema_moedas_api.Repository.CourseRepository;
 import br.pucminas.sistema_moedas_api.Repository.DepartmentRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +58,19 @@ public class ProfessorService {
 
     professorRepository.save(newProfessor);
     return newProfessor;
+  }
+
+    @Transactional
+  public Professor update(ProfessorUpdateDTO professorDTO, Long id) {
+    Professor professor = professorRepository.findById(id)
+        .orElseThrow(()-> new RuntimeException("Professor não encontrado"));
+
+    professor.setName(professorDTO.name());
+    professor.setPassword(professorDTO.password());
+    professor.setCPF(professorDTO.CPF());
+    professor.setBalance(professorDTO.balance());
+
+    return professorRepository.save(professor);
   }
 
   private ProfessorGetDTO convertToDTO(Professor professor) {

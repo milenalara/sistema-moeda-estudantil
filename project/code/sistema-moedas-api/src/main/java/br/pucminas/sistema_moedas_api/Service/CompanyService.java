@@ -57,4 +57,18 @@ public class CompanyService {
         company.getPassword());
   }
 
+  @Transactional
+  public void update(CompanyCreateDTO companyDTO, Long id) {
+    
+      Optional<Company> optionalCompany = companyRepository.findById(id);
+      Company existingCompany = optionalCompany.orElseThrow(() -> 
+          new RuntimeException("Empresa não encontrada! Id: " + id));
+  
+      existingCompany.setName(companyDTO.name());
+      existingCompany.setPassword(companyDTO.password());
+  
+      companyRepository.save(existingCompany);
+  }
+  
+
 }

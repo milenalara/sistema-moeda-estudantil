@@ -7,10 +7,15 @@ import Empresa from './components/empresa'
 import Admin from './components/admin'
 import Professor from './components/professor'
 import ProfessorLogin from './components/professorLogin'
+import CompanyLogin from './components/empresaLogin'
+import ProfessorHistory from './components/professorHistory'
 import AdminAluno from './components/adminAluno'
 import AdminEmpresa from './components/adminEmpresa'
 import AdminProfessor from './components/adminProfessor'
-import EditStudentPage from './pages/EditStudentPage'
+// import EditStudentPage from './pages/EditStudentPage'
+import AdminAlunoEdit from './components/adminAlunoEdit'
+import AdminEmpresaEdit from './components/adminEmpresaEdit'
+import VantagemEdit from './components/vantagemEdit'
 
 import {
   BrowserRouter as Router,
@@ -64,8 +69,24 @@ function App() {
             element={<ProfessorLogin />}
           />
           <Route
-            path="/estudante/editar/:id"
-            element={<EditStudentPage />}
+            path="/professorHistory"
+            element={<ProfessorHistory />}
+          />
+          <Route
+            path="/adminAlunoEdit/:id"
+            element={<AdminAlunoEdit />}
+          />
+          <Route
+            path="/vantagemEdit/:id"
+            element={<VantagemEdit />}
+          />
+          <Route
+            path="/adminEmpresa/edit/:id"
+            element={<AdminEmpresaEdit />}
+          />
+          <Route
+            path="/empresaLogin"
+            element={<CompanyLogin />}
           />
         </Routes>
       </Router>

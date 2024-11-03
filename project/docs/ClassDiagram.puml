@@ -1,4 +1,4 @@
-@startuml
+@startuml diagrama de classes
 'https://plantuml.com/class-diagram
 
 Usuario <|-- Aluno
@@ -43,7 +43,10 @@ class Professor{
 
 class Empresa{}
 class InstituicaoEnsino{}
-class Vantagem {}
+class Vantagem {
+    -descrição: String
+    -custo: Int
+}
 
 enum Curso {}
 enum Departamento {}
