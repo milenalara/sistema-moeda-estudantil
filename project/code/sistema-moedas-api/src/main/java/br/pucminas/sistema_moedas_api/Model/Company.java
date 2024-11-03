@@ -17,7 +17,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Company { // empresa
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
@@ -32,6 +31,8 @@ public class Company { // empresa
     @NotBlank
     @Size(min = 3, max = 100)
     String password;
+
+    // criar campo de cnpj
 
     @OneToMany(mappedBy = "company")
     List<Advantage> advantages;
