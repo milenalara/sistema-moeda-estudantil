@@ -24,6 +24,11 @@ const columns: GridColDef[] = [
       return row.course.name;
     },
   },
+  {
+    field: "edit",
+    headerName: "Editar",
+    width: 130,
+  }
 ];
 
 const paginationModel = { page: 0, pageSize: 10 };
