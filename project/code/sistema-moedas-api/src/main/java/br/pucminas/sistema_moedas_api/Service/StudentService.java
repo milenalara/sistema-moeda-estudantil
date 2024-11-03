@@ -26,6 +26,20 @@ public class StudentService {
   @Autowired
   private EducationalInstitutionRepository educationalInstitutionRepository;
 
+  public LoginResponseDTO login(LoginRequestDTO request) {
+    Student student = studentRepository.findByEmail(request.email())
+        .orElseThrow(()-> new RuntimeException("Aluno não encontrado"));
+
+    if(!student.getPassword().equals(request.password())) {
+      throw new RuntimeException("Senha incorreta");
+    }
+
+    return new LoginResponseDTO(
+        student.getId(),
+        student.getClass().getSimpleName()
+    );
+  }
+
   public StudentGetDTO findById(Long id) {
     Optional<Student> student = studentRepository.findById(id);
     Student foundStudent = student.orElseThrow(() -> new RuntimeException(
