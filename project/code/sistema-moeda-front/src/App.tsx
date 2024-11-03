@@ -73,6 +73,7 @@ function App() {
           <Route 
             path="/adminAlunoEdit/:id" 
             element={<AdminAlunoEdit />} 
+          />
           <Route
             path="/professorHistory"
             element={<ProfessorHistory />}
