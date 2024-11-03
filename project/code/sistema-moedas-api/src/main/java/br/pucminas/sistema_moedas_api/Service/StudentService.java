@@ -1,6 +1,8 @@
 package br.pucminas.sistema_moedas_api.Service;
 
 import br.pucminas.sistema_moedas_api.DTO.*;
+import br.pucminas.sistema_moedas_api.Exception.IncorrectPasswordException;
+import br.pucminas.sistema_moedas_api.Exception.UserNotFoundException;
 import br.pucminas.sistema_moedas_api.Model.Course;
 import br.pucminas.sistema_moedas_api.Model.EducationalInstitution;
 import br.pucminas.sistema_moedas_api.Model.Student;
@@ -25,6 +27,21 @@ public class StudentService {
 
   @Autowired
   private EducationalInstitutionRepository educationalInstitutionRepository;
+
+  public LoginResponseDTO login(LoginRequestDTO request) {
+    Student student = studentRepository.findByEmail(request.email())
+        .orElseThrow(()-> new UserNotFoundException("Student not found"));
+
+
+    if(!student.getPassword().equals(request.password())) {
+      throw new IncorrectPasswordException("Incorrect password");
+    }
+
+    return new LoginResponseDTO(
+        student.getId(),
+        student.getClass().getSimpleName()
+    );
+  }
 
   public StudentGetDTO findById(Long id) {
     Optional<Student> student = studentRepository.findById(id);
@@ -71,8 +88,22 @@ public class StudentService {
 
   @Transactional
   public Student update(StudentUpdateDTO studentDTO, Long id) {
+    Student student = convertFromDTO(studentDTO, id);
+    return studentRepository.save(student);
+  }
+
+  private Student convertFromDTO (StudentUpdateDTO studentDTO, Long id) {
     Student student = studentRepository.findById(id)
         .orElseThrow(()-> new RuntimeException("Estudante não encontrado"));
+
+
+    EducationalInstitution educationalInstitution = educationalInstitutionRepository.findById(
+        studentDTO.educationalInstitutionId()).orElseThrow(
+        () -> new RuntimeException("Instituição de Ensino não encontrada"));
+
+    Course course = courseRepository.findById(
+        studentDTO.courseId()).orElseThrow(
+        () -> new RuntimeException("Curso não encontrado"));
 
     student.setName(studentDTO.name());
     student.setPassword(studentDTO.password());
@@ -81,7 +112,7 @@ public class StudentService {
     student.setRG(studentDTO.RG());
     student.setBalance(studentDTO.balance());
 
-    return studentRepository.save(student);
+    return student;
   }
 
   private StudentGetDTO convertToDTO(Student student) {

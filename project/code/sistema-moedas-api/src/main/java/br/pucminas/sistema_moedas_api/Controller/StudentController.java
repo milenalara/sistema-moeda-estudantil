@@ -1,8 +1,6 @@
 package br.pucminas.sistema_moedas_api.Controller;
 
-import br.pucminas.sistema_moedas_api.DTO.StudentCreateDTO;
-import br.pucminas.sistema_moedas_api.DTO.StudentGetDTO;
-import br.pucminas.sistema_moedas_api.DTO.StudentUpdateDTO;
+import br.pucminas.sistema_moedas_api.DTO.*;
 import br.pucminas.sistema_moedas_api.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +13,13 @@ import java.util.List;
 public class StudentController {
   @Autowired
   private StudentService studentService;
+
+
+  @PostMapping("/login")
+  public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO request) {
+    LoginResponseDTO response = studentService.login(request);
+    return ResponseEntity.ok(response);
+  }
 
   @GetMapping
   public ResponseEntity<List<StudentGetDTO>> findAll() {

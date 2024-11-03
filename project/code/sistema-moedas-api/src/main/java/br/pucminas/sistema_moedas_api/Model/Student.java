@@ -18,38 +18,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(unique = true)
-  Long id;
-
-  @Column(nullable = false, length = 100)
-  @NotBlank
-  @Size(min = 3, max = 100)
-  String name;
-
-  @Column(nullable = false, length = 100)
-  @NotBlank
-  @Size(min = 3, max = 100)
-  String password;
-
-  @Column(nullable = false, length = 100)
-  @Email
-  @NotBlank
-  String email;
-
-  @Column(name = "cpf", nullable = false, length = 11)
-  @NotBlank
-  String CPF; // Cadastro de Pessoa Fisica = Natural Persons Register
-
+public class Student extends User {
   @Column
   @NotNull
   Integer balance; // Saldo
-
-  @Column(name = "rg", nullable = false, length = 9)
-  @NotBlank
-  String RG; // Numero do Registro Geral = Brazilian National Identity Card Number
 
   @ManyToOne
   @JoinColumn(name = "educationalInstitution_id", nullable = false)

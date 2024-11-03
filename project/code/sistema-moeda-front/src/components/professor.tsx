@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { Password } from '@mui/icons-material';
 
 function Professor(id: number) {
   const [count, setCount] = useState(0)
@@ -56,16 +55,19 @@ function Professor(id: number) {
       CPF: aluno.CPF,
       RG: aluno.RG,
       password: aluno.password,
-      balance: aluno.balance
+      balance: aluno.balance,
+      educationalInstitution: aluno.educationalInstitution,
+      course: aluno.course
+
 
     }
 
-    const res = await axios.put(`http://localhost:8080/api/student/${aluno.id}` , newAluno)
+    await axios.put(`http://localhost:8080/api/student/update/${aluno.id}`, newAluno)
 
     professor.balance -= moedasDoar.moedas
     delete professor.departmentId
 
-    const resProf = await axios.put(`http://localhost:8080/api/professor/${professor.id}`, professor)
+    await axios.put(`http://localhost:8080/api/professor/${professor.id}`, professor)
 
     const pagamento = {
       date: new Date().toDateString(),

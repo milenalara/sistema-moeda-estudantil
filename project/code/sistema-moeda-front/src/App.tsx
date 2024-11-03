@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './index.css'
-import MyComponent from './pages/MyComponent'
 import Aluno from './components/aluno'
 import Home from './components/home'
 import Empresa from './components/empresa'
 import Admin from './components/admin'
 import Professor from './components/Professor'
 import ProfessorLogin from './components/professorLogin'
+import CompanyLogin from './components/empresaLogin'
 import ProfessorHistory from './components/professorHistory'
 import AdminAluno from './components/adminAluno'
 import AdminEmpresa from './components/adminEmpresa'
@@ -15,6 +15,8 @@ import EditStudentPage from './pages/EditStudentPage'
 import AdminAlunoEdit from './components/adminAlunoEdit'
 import AdminEmpresaEdit from './components/adminEmpresaEdit'
 import AdminStudentPage from './pages/AdminStudentPage'
+import VantagemEdit from './components/vantagemEdit'
+
 
 import {
   BrowserRouter as Router,
@@ -22,6 +24,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import StudentLogin from './pages/StudentLoginPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -67,13 +70,20 @@ function App() {
             path="/professorLogin"
             element={<ProfessorLogin />}
           />
-            {/* <Route
-            path="/professorHistory"
-            element={<ProfessorHistory />}
-          /> */}
           <Route 
             path="/adminAlunoEdit/:id" 
             element={<AdminAlunoEdit />} 
+          <Route
+            path="/professorHistory"
+            element={<ProfessorHistory />}
+          />
+          <Route
+            path="/adminAlunoEdit/:id"
+            element={<AdminAlunoEdit />}
+          />
+          <Route
+            path="/vantagemEdit/:id"
+            element={<VantagemEdit />}
           />
           <Route
             path="/adminEmpresa/edit/:id"
@@ -82,6 +92,14 @@ function App() {
           <Route
             path="/admin/estudantes"
             element={<AdminStudentPage />}
+          />
+          <Route
+            path="/empresaLogin"
+            element={<CompanyLogin />}
+          />
+        <Route
+          path="/aluno/login"
+          element={<StudentLogin />}
           />
         </Routes>
       </Router>
