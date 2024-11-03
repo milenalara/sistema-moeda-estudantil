@@ -1,6 +1,8 @@
 package br.pucminas.sistema_moedas_api.Service;
 
 import br.pucminas.sistema_moedas_api.DTO.*;
+import br.pucminas.sistema_moedas_api.Exception.IncorrectPasswordException;
+import br.pucminas.sistema_moedas_api.Exception.UserNotFoundException;
 import br.pucminas.sistema_moedas_api.Model.Course;
 import br.pucminas.sistema_moedas_api.Model.EducationalInstitution;
 import br.pucminas.sistema_moedas_api.Model.Student;
@@ -25,6 +27,21 @@ public class StudentService {
 
   @Autowired
   private EducationalInstitutionRepository educationalInstitutionRepository;
+
+  public LoginResponseDTO login(LoginRequestDTO request) {
+    Student student = studentRepository.findByEmail(request.email())
+        .orElseThrow(()-> new UserNotFoundException("Student not found"));
+
+
+    if(!student.getPassword().equals(request.password())) {
+      throw new IncorrectPasswordException("Incorrect password");
+    }
+
+    return new LoginResponseDTO(
+        student.getId(),
+        student.getClass().getSimpleName()
+    );
+  }
 
   public StudentGetDTO findById(Long id) {
     Optional<Student> student = studentRepository.findById(id);
