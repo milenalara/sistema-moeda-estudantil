@@ -16,25 +16,25 @@ import AdminAlunoEdit from "./components/adminAlunoEdit";
 import AdminEmpresaEdit from "./components/adminEmpresaEdit";
 import AdminStudentPage from "./pages/Admin/AdminStudentPage";
 import VantagemEdit from "./components/vantagemEdit";
-import StudentLogin from "./pages/Login/StudentLoginPage";
+import LoginPage from "./pages/Login/LoginPage";
 import StudentPage from "./pages/Student/StudentPage";
-
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
-
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
+    <UserProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/home" element={<Home />} />
           {/* <Route path="/aluno" element={<Aluno />} /> */}
           <Route path="/adminAluno" element={<AdminAluno />} />
           <Route path="/empresa" element={<Empresa />} />
@@ -50,12 +50,12 @@ function App() {
           <Route path="/adminEmpresa/edit/:id" element={<AdminEmpresaEdit />} />
           <Route path="/admin/estudantes" element={<AdminStudentPage />} />
           <Route path="/empresaLogin" element={<CompanyLogin />} />
-          <Route path="/aluno/login" element={<StudentLogin />} />
+          <Route path="/aluno/login" element={<LoginPage />} />
           <Route path="/admin/editar/aluno/:id" element={<EditStudentPage />} />
-          <Route path="/aluno" element={<StudentPage/>} />
+          <Route path="/aluno" element={<StudentPage />} />
         </Routes>
       </Router>
-    </>
+    </UserProvider>
   );
 }
 

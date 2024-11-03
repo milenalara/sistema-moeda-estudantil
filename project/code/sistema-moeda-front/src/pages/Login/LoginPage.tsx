@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios, { AxiosError } from "axios";
 import Box from "@mui/material/Box";
@@ -7,23 +7,32 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
+import { UserContext } from "../../context/UserContext";
 
-const StudentLogin = () => {
+const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const userContext = useContext(UserContext);
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/student/login",
+        "http://localhost:8080/api/user/login",
         {
           email,
           password,
         }
       );
-      navigate("/aluno");
+      if (userContext) {
+        userContext.setUserId(response.data.id);
+        userContext.setUserType(response.data.userType);
+
+        if(response.data.userType === "Admin") navigate("/admin");
+        if(response.data.userType === "Professor") navigate("/professor");
+        if(response.data.userType === "Student") navigate("/aluno");
+      }
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const error = err as AxiosError;
@@ -107,4 +116,4 @@ const StudentLogin = () => {
   );
 };
 
-export default StudentLogin;
+export default LoginPage;
