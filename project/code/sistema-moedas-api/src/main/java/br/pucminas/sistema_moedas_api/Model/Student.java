@@ -21,7 +21,7 @@ import lombok.Setter;
 public class Student extends User {
   @Column
   @NotNull
-  Integer balance; // balance
+  Integer balance; // Saldo
 
   @ManyToOne
   @JoinColumn(name = "educationalInstitution_id", nullable = false)
