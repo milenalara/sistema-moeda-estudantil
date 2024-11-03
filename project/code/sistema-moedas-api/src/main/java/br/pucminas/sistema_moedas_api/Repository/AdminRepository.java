@@ -1,12 +1,12 @@
 package br.pucminas.sistema_moedas_api.Repository;
 
-import br.pucminas.sistema_moedas_api.Model.Professor;
+import br.pucminas.sistema_moedas_api.Model.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface ProfessorRepository extends JpaRepository<Professor, Long> {
-  Optional<Professor> findByEmail(String email);
+public interface AdminRepository extends JpaRepository<Admin, Long> {
+  Optional<Admin> findByEmail(String email);
 
   boolean existsByEmail(String email);
 }

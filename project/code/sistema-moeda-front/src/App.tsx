@@ -16,7 +16,7 @@ import AdminAlunoEdit from "./components/adminAlunoEdit";
 import AdminEmpresaEdit from "./components/adminEmpresaEdit";
 import AdminStudentPage from "./pages/Admin/AdminStudentPage";
 import VantagemEdit from "./components/vantagemEdit";
-import StudentLogin from "./pages/Student/StudentLoginPage";
+import StudentLogin from "./pages/Login/StudentLoginPage";
 import StudentPage from "./pages/Student/StudentPage";
 
 import {
