@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './index.css'
-import MyComponent from './pages/MyComponent'
 import Aluno from './components/aluno'
 import Home from './components/home'
 import Empresa from './components/empresa'
@@ -23,6 +22,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import StudentLogin from './pages/StudentLoginPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -87,6 +87,10 @@ function App() {
           <Route
             path="/empresaLogin"
             element={<CompanyLogin />}
+          />
+        <Route
+          path="/aluno/login"
+          element={<StudentLogin />}
           />
         </Routes>
       </Router>
