@@ -38,6 +38,7 @@ const LoginPage = () => {
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const error = err as AxiosError;
+        console.log(error);
         alert(
           `${error.response?.data}\nStatus: ${error.response?.status} - ${error.code}`
         );

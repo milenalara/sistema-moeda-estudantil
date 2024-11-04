@@ -106,13 +106,13 @@ public class StudentService {
         .orElseThrow(()-> new RuntimeException("Estudante não encontrado"));
 
 
-    EducationalInstitution educationalInstitution = educationalInstitutionRepository.findById(
-        studentDTO.educationalInstitutionId()).orElseThrow(
-        () -> new RuntimeException("Instituição de Ensino não encontrada"));
-
-    Course course = courseRepository.findById(
-        studentDTO.courseId()).orElseThrow(
-        () -> new RuntimeException("Curso não encontrado"));
+//    EducationalInstitution educationalInstitution = educationalInstitutionRepository.findById(
+//        studentDTO.educationalInstitutionId()).orElseThrow(
+//        () -> new RuntimeException("Instituição de Ensino não encontrada"));
+//
+//    Course course = courseRepository.findById(
+//        studentDTO.courseId()).orElseThrow(
+//        () -> new RuntimeException("Curso não encontrado"));
 
     student.setName(studentDTO.name());
     student.setPassword(studentDTO.password());
