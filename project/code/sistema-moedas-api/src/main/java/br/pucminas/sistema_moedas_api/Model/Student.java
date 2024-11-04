@@ -32,7 +32,6 @@ public class Student extends User {
   @NotBlank
   String RG; // Numero do Registro Geral = Brazilian National Identity Card Number
 
-
   @Column
   @NotNull
   Integer balance; // Saldo

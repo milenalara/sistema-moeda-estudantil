@@ -13,10 +13,10 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import logo from "../../assets/money.svg";
+import logo from "../../assets/benefits.png";
 
 const pages = [
-  { name: "Home", path: "/aluno/home" },
+  { name: "Home", path: "/aluno" },
   { name: "Saldo", path: "/aluno/saldo" },
   { name: "Vantagens", path: "/aluno/vantagens" },
 ];
@@ -49,8 +49,7 @@ function StudentAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* logo */}
-          <img src={logo} width="70px" />
+          <img src={logo} width="70px" style={{padding: "5px"}} />
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
