@@ -58,8 +58,6 @@ function Professor(id: number) {
       balance: aluno.balance,
       educationalInstitution: aluno.educationalInstitution,
       course: aluno.course
-
-
     }
 
     await axios.put(`http://localhost:8080/api/student/update/${aluno.id}`, newAluno)
@@ -76,7 +74,7 @@ function Professor(id: number) {
       studentId: aluno.id
     }
 
-    const resPay = await axios.post(`http://localhost:8080/api/payment`, pagamento)
+    await axios.post(`http://localhost:8080/api/payment`, pagamento)
 
     getAlunos()
     getProfessor()

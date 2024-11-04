@@ -67,7 +67,6 @@ public class ProfessorService {
 
     professor.setName(professorDTO.name());
     professor.setPassword(professorDTO.password());
-    professor.setCPF(professorDTO.CPF());
     professor.setBalance(professorDTO.balance());
 
     return professorRepository.save(professor);

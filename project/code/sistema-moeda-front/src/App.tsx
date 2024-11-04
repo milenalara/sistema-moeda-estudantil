@@ -4,7 +4,7 @@ import Aluno from "./components/aluno";
 import Home from "./components/home";
 import Empresa from "./components/empresa";
 import Admin from "./components/admin";
-import Professor from "./components/Professor";
+import Professor from "./components/professor";
 import ProfessorLogin from "./components/professorLogin";
 import CompanyLogin from "./components/empresaLogin";
 import ProfessorHistory from "./components/professorHistory";
