@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, useState, ReactNode } from "react";
 
 interface UserContextType {
   userId: string | null;
@@ -10,28 +10,8 @@ interface UserContextType {
 export const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [userId, setUserId] = useState<string | null>(()=> {
-    return localStorage.getItem("userId");
-  });
-  const [userType, setUserType] = useState<string | null>(()=> {
-    return localStorage.getItem("userType");
-  });
-
-  useEffect(()=> {
-    if(userId !== null) {
-      localStorage.setItem("userId", userId)
-    } else {
-      localStorage.removeItem("userId");
-    }
-  }, [userId]);
-
-  useEffect(() => {
-    if (userType !== null) {
-      localStorage.setItem("userType", userType);
-    } else {
-      localStorage.removeItem("userType");
-    }
-  }, [userType]);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [userType, setUserType] = useState<string | null>(null);
 
   return (
     <UserContext.Provider value={{ userId, setUserId, userType, setUserType }}>
