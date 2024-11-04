@@ -13,8 +13,25 @@ VALUES ('18.123.456/0001-95', 'Pontifícia Universidade Católica de Minas Gerai
        ('92.345.678/0001-88', 'Escola Superior Dom Helder Câmara'),
        ('10.876.543/0001-99', 'Faculdade Senac Minas');
 
-INSERT INTO company (name ,password)
-VALUES ('Empresa 1', '1234'),('Empresa 2', '1234'),('Empresa 3', '1234'),('Empresa 4', '1234');
+
+INSERT INTO company (name, password)
+VALUES
+    ('Educa Brasil', 'senha123'),
+    ('Saúde & Bem-Estar', 'senha456'),
+    ('Tecnologia Avançada', 'senha789'),
+    ('Linguagem Ativa', 'senha101'),
+    ('Inova Cursos', 'senha202'),
+    ('Fit & Saudável', 'senha303'),
+    ('Educação Inteligente', 'senha404'),
+    ('Mundo Verde', 'senha505'),
+    ('StartUP Jovem', 'senha606'),
+    ('Futuro Digital', 'senha707'),
+    ('Empresa 1', '1234'),
+    ('Empresa 2', '1234'),
+    ('Empresa 3', '1234'),
+    ('Empresa 4', '1234');
+
+
 
 INSERT INTO department (name)
 VALUES ('Departamento 1'),
@@ -104,8 +121,8 @@ VALUES ('Professor 1', 'professor1@example.com','12345678901', 'MG7777777', 1, 0
 
 
 INSERT INTO student (name, email, cpf, rg, educational_institution_id, course_id, balance, password)
-VALUES ('Lucas Almeida', 'lucas.almeida@example.com', '12345678901', 'MG1234567', 1, 5, 0, 'default'),
-       ('Ana Beatriz Souza', 'ana.souza@example.com', '23456789012', 'MG2345678', 2, 12, 0, 'default'),
+VALUES ('Lucas Almeida', 'lucas.almeida@example.com', '12345678901', 'MG1234567', 1, 5, 1000, 'default'),
+       ('Ana Beatriz Souza', 'ana.souza@example.com', '23456789012', 'MG2345678', 2, 12, 2000, 'default'),
        ('Pedro Henrique Santos', 'pedro.santos@example.com', '34567890123', 'MG3456789', 3, 20, 0, 'default'),
        ('Mariana Oliveira', 'mariana.oliveira@example.com', '45678901234', 'MG4567890', 1, 14, 0, 'default'),
        ('Gabriel Ferreira', 'gabriel.ferreira@example.com', '56789012345', 'MG5678901', 4, 22, 0, 'default'),
@@ -128,3 +145,16 @@ VALUES ('Lucas Almeida', 'lucas.almeida@example.com', '12345678901', 'MG1234567'
 
 INSERT INTO admin (email, password)
 VALUES ('admin@admin.com', 'admin');
+
+
+INSERT INTO advantage (name, cost, description, company_id) VALUES
+    ('Desconto em Cursos Preparatórios', 450, 'Desconto de 30% em cursos preparatórios oferecidos pela Educa Brasil', 1),
+    ('Plano de Saúde Corporativo', 600, 'Acesso a um plano de saúde com cobertura nacional pela Saúde & Bem-Estar', 2),
+    ('Acesso a Plataforma de Tecnologia', 750, 'Assinatura gratuita por 1 ano em plataforma de ensino de tecnologia da Tecnologia Avançada', 3),
+    ('Curso de Idiomas Online', 500, 'Desconto de 40% em cursos de idiomas oferecidos pela Linguagem Ativa', 4),
+    ('Desconto em Cursos Profissionalizantes', 300, 'Desconto de 20% em cursos profissionalizantes na Inova Cursos', 5),
+    ('Academia Parceira', 400, 'Acesso gratuito a academias parceiras da Fit & Saudável', 6),
+    ('Curso de Habilidades Pessoais', 250, 'Aulas gratuitas de desenvolvimento pessoal e profissional na Educação Inteligente', 7),
+    ('Programa de Alimentação Saudável', 350, 'Desconto em produtos naturais e orgânicos na Mundo Verde', 8),
+    ('Workshop de Empreendedorismo', 200, 'Participação em workshops de empreendedorismo oferecidos pela StartUP Jovem', 9),
+    ('Assinatura de Plataforma de Cursos Digitais', 550, 'Acesso gratuito a uma plataforma de cursos digitais oferecida pelo Futuro Digital', 10);

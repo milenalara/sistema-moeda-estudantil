@@ -17,6 +17,7 @@ import AdminEmpresaEdit from "./components/adminEmpresaEdit";
 import AdminStudentPage from "./pages/Admin/AdminStudentPage";
 import VantagemEdit from "./components/vantagemEdit";
 import LoginPage from "./pages/Login/LoginPage";
+import { UserProvider } from "./context/UserContext";
 import StudentPage from "./pages/Student/StudentPage";
 import {
   BrowserRouter as Router,
@@ -24,7 +25,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { UserProvider } from "./context/UserContext";
+import ExchangeAdvantages from "./pages/Student/ExchangeAdvantages";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -53,6 +54,7 @@ function App() {
           <Route path="/aluno/login" element={<LoginPage />} />
           <Route path="/admin/editar/aluno/:id" element={<EditStudentPage />} />
           <Route path="/aluno" element={<StudentPage />} />
+          <Route path="/aluno/vantagens" element={<ExchangeAdvantages />} />
         </Routes>
       </Router>
     </UserProvider>
