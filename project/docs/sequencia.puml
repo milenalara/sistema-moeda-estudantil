@@ -1,0 +1,21 @@
+@startuml sequencia
+
+participant Professor as prof
+participant Aluno as alu
+participant Empresa as emp
+participant Vantagem as van
+participant Pagamento as pay
+participant Transações as tra
+
+
+->prof: receberMoedas
+prof->alu: enviarMoedas
+prof -> pay: registraPagamento
+emp->van: criaVantagem
+alu->van: compraVantagem
+alu->tra: registraTransação
+
+
+
+
+@enduml
