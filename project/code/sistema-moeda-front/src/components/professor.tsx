@@ -8,7 +8,7 @@ function Professor(id: number) {
   const [professor, setProfessor] = useState([])
   const [alunos, setAlunos] = useState([])
   const [pagamentos, setPagamentos] = useState([])
-  const [moedasDoar, setMoedas] = useState({ moedas: 0 })
+  const [moedasDoar, setMoedas] = useState({ moedas: 0 , descricao: ''})
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
 
@@ -18,13 +18,17 @@ function Professor(id: number) {
     setMoedas({ ...moedasDoar, moedas: e.target.value })
   }
 
+  const handleDescDoarChange = (e) => {
+    setMoedas({ ...moedasDoar, descricao: e.target.value })
+  }
+
   useEffect(() => {
     getProfessor();
     getAlunos();
   }, []);
 
   const getProfessor = async () => {
-    const res = await axios.get('http://localhost:8080/api/professor/' + userContext?.userId)
+    const res = await axios.get('http://localhost:8080/api/professor/' + userContext.userId)
     console.log("PROFESSOR DATA" + res.data);
     setProfessor(res.data)
   }
@@ -67,7 +71,7 @@ function Professor(id: number) {
       alert("Aluno ID must not be null");
     }
 
-    const response = await axios.put(`http://localhost:8080/api/student/update/${newAluno.id}`, newAluno)
+    await axios.put(`http://localhost:8080/api/student/update/${newAluno.id}`, newAluno)
 
 
     professor.balance -= moedasDoar.moedas
@@ -79,6 +83,7 @@ function Professor(id: number) {
       date: new Date().toDateString(),
       cost: moedasDoar.moedas,
       professorId: professor.id,
+      description: moedasDoar.descricao,
       studentId: aluno.id 
     }
 
@@ -106,6 +111,7 @@ function Professor(id: number) {
       <ul>
         {alunos.map((aluno) => (
           <><li key={aluno.name}>{aluno.name}, Saldo: {aluno.balance}</li>
+            <input type="text" placeholder='descrição' onChange={handleDescDoarChange}/>
             <button onClick={() => doarAluno(aluno)}>Dar {moedasDoar.moedas} moedas</button></>
         ))}
       </ul>

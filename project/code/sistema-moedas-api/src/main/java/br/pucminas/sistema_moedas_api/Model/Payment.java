@@ -31,6 +31,9 @@ public class Payment {
   @NotNull
   Integer cost; 
 
+  @Column
+  String description;
+
   @ManyToOne
   @JoinColumn(name = "professor_id", nullable = false)
   Professor professor; 

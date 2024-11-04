@@ -30,7 +30,7 @@ function adminProfessor() {
 
   const updateSemester = async () => {
     professors.forEach(async professor => {
-      professor.balance += 100;
+      professor.balance += 1000;
       delete professor.departmentId;
       const res = await axios.put(`http://localhost:8080/api/professor/${professor.id}`, professor)
     });
@@ -41,7 +41,7 @@ function adminProfessor() {
   return (
     <>
 
-      <button onClick={() => updateSemester()}>Simular passar semestre (+100 moedas para todos profs)</button>
+      <button onClick={() => updateSemester()}>Simular passar semestre (+1000 moedas para todos profs)</button>
       <h2>Professores:</h2>
       <ul>
         {professors.map((professor) => (

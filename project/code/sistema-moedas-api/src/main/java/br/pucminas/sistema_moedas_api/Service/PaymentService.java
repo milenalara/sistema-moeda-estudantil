@@ -52,6 +52,7 @@ public class PaymentService {
     newPayment.setId(null);
     newPayment.setCost(payment.cost());
     newPayment.setDate(payment.date());
+    newPayment.setDescription(payment.description());
     newPayment.setProfessor(professor);
     newPayment.setStudent(student);
 
@@ -66,6 +67,7 @@ public class PaymentService {
     return new PaymentGetDTO(
         payment.getId(),
         payment.getDate(),
+        payment.getDescription(),
         payment.getCost(),
         professor,
         student);

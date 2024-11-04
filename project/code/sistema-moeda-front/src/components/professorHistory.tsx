@@ -42,7 +42,7 @@ function ProfessorHistory(id: number) {
       <h2>Historico:</h2>
       <ul>
         {pagamentos.map((pagamento) => (
-          <><li key={pagamento.id}>{pagamento.date}, Valor: {pagamento.cost} de {pagamento.professorId.name} para {pagamento.studentId.name} </li></>
+          <><li key={pagamento.id}>{pagamento.date}, Valor: {pagamento.cost} de {pagamento.professorId.name} para {pagamento.studentId.name} {pagamento.description}</li></>
         ))}
       </ul>
 
