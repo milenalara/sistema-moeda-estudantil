@@ -8,6 +8,8 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import { UserContext } from "../../context/UserContext";
+import benefits from "../../assets/benefits.png";
+import { Beenhere } from "@mui/icons-material";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -29,13 +31,14 @@ const LoginPage = () => {
         userContext.setUserId(response.data.id);
         userContext.setUserType(response.data.userType);
 
-        if(response.data.userType === "Admin") navigate("/admin");
-        if(response.data.userType === "Professor") navigate("/professor");
-        if(response.data.userType === "Student") navigate("/aluno");
+        if (response.data.userType === "Admin") navigate("/admin");
+        if (response.data.userType === "Professor") navigate("/professor");
+        if (response.data.userType === "Student") navigate("/aluno");
       }
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const error = err as AxiosError;
+        console.log(error);
         alert(
           `${error.response?.data}\nStatus: ${error.response?.status} - ${error.code}`
         );
@@ -58,15 +61,26 @@ const LoginPage = () => {
     <Box
       sx={{
         display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         flexWrap: "wrap",
         "& > :not(style)": {
           m: 1,
-          width: 250,
+          width: 300,
           height: 400,
         },
       }}
     >
-      <Paper elevation={3}>
+      <Paper
+        elevation={3}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img src={benefits} style={{ width: "100px", paddingTop: "35px" }} />
         <Box
           sx={{
             width: "100%",

@@ -105,6 +105,7 @@ public class StudentService {
     Student student = studentRepository.findById(id)
         .orElseThrow(()-> new RuntimeException("Estudante não encontrado"));
 
+
     student.setName(studentDTO.name());
     student.setPassword(studentDTO.password());
     student.setEmail(studentDTO.email());

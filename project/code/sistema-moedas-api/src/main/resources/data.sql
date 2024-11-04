@@ -140,8 +140,7 @@ VALUES ('Lucas Almeida', 'aluno@exemplo.com', '12345678901', 'MG1234567', 1, 5, 
        ('Tiago Freitas', 'tiago.freitas@exemplo.com', '16234567897', 'MG1623456', 4, 45, 0, 'default'),
        ('Vanessa Ribeiro', 'vanessa.ribeiro@exemplo.com', '17234567898', 'MG1723456', 5, 61, 0, 'default'),
        ('Diego Araujo', 'diego.araujo@exemplo.com', '18234567899', 'MG1823456', 6, 8, 0, 'default'),
-       ('Fernanda Costa', 'fernanda.costa@exemplo.com', '19234567890', 'MG1923456', 2, 32, 0, 'default'),
-       ('Aluno', 'aluno@exemplo.com', '11111111111', 'MG1111111', 2, 32, 0, 'abcd1234');
+       ('Fernanda Costa', 'fernanda.costa@exemplo.com', '19234567890', 'MG1923456', 2, 32, 0, 'default');
 
 INSERT INTO admin (email, password)
 VALUES ('admin@exemplo.com', 'default');
