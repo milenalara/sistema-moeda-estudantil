@@ -82,7 +82,7 @@ function Professor(id: number) {
       studentId: aluno.id 
     }
 
-    const resPay = await axios.post(`http://localhost:8080/api/payment`, pagamento)
+    await axios.post(`http://localhost:8080/api/payment`, pagamento)
 
     getAlunos()
     getProfessor()
