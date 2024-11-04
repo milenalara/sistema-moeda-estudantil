@@ -4,44 +4,11 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useParams } from "react-router-dom";
-
-interface IStudent {
-  id: number;
-  name: string;
-  password: string;
-  email: string;
-  CPF: string;
-  RG: string;
-  balance: number;
-  educationalInstitution: IEducationalInstitution;
-  course: ICourse;
-}
-
-interface IEducationalInstitution {
-  id: number;
-  name: string;
-}
-
-interface IUpdatedStudent {
-  name: string;
-  password: string;
-  email: string;
-  CPF: string;
-  RG: string;
-  balance: number;
-  educationalInstitutionId: number;
-  courseId: number;
-}
-
-interface ICourse {
-  id: number;
-  name: string;
-}
+import IStudent from "../../data/model/IStudent";
 
 const EditStudentPage = () => {
   const { id } = useParams<{ id: string }>();
   const [student, setStudent] = useState<IStudent | null>(null);
-  const [updatedStudent, setUpdatedStudent]= useState<IUpdatedStudent | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

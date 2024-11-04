@@ -5,6 +5,6 @@ public record AdvantageGetDTO(
     String name,
     String description,
     Integer cost,
-    AdvantageGetCompanyDTO companyId
+    AdvantageGetCompanyDTO company
 ) {
 }

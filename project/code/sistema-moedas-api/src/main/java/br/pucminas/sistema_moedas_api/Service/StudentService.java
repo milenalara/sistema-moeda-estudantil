@@ -92,6 +92,15 @@ public class StudentService {
     return studentRepository.save(student);
   }
 
+  @Transactional
+  public Student updateBalance(Student student, Long id) {
+    Student updatedStudent = studentRepository.findById(id)
+        .orElseThrow(()-> new UserNotFoundException("Student not found"));
+
+    updatedStudent.setBalance(student.getBalance());
+    return studentRepository.save(updatedStudent);
+  }
+
   private Student convertFromDTO (StudentUpdateDTO studentDTO, Long id) {
     Student student = studentRepository.findById(id)
         .orElseThrow(()-> new RuntimeException("Estudante não encontrado"));
