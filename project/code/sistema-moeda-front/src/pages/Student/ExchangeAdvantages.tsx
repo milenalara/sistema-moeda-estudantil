@@ -33,7 +33,7 @@ const ExchangeAdvantages = () => {
     const fetchStudent = async () => {
       try {
         const response = await axios.get<IStudent>(
-          `http://localhost:8080/api/student/1`
+          `http://localhost:8080/api/student/${userContext?.userId}`
         );
         setStudent(response.data);
       } catch (err: any) {
@@ -64,8 +64,7 @@ const ExchangeAdvantages = () => {
 
     // envia a atualização do saldo para o back-end
     try {
-        console.log(student);
-        const response = axios.patch(`http://localhost:8080/api/student/update/1`,
+        const response = axios.patch(`http://localhost:8080/api/student/update/${student.id}`,
         {...student, balance: newBalance});
         setStudent({...student, balance: newBalance});
         alert("Troca realizada com sucesso!");
