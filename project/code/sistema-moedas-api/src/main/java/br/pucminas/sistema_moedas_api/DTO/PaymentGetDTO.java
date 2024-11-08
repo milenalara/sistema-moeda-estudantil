@@ -5,7 +5,7 @@ public record PaymentGetDTO(
     String date,
     String description,
     Integer cost,
-    PaymentGetProfessorDTO professorId,
-    PaymentGetStudentDTO studentId
+    ProfessorDTO professorId,
+    StudentDTO studentId
 ) {
 }
