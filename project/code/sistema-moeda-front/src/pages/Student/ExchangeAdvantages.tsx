@@ -6,6 +6,7 @@ import IStudent from "../../data/model/IStudent";
 import IAdvantage from "../../data/model/IAdvantage";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 import { UserContext } from "../../context/UserContext";
+import ITransaction from "../../data/model/ITransaction";
 
 const ExchangeAdvantages = () => {
   const [advantages, setAdvantages] = useState<IAdvantage[]>([]);
@@ -62,10 +63,16 @@ const ExchangeAdvantages = () => {
         return;
     }
 
-    // envia a atualização do saldo para o back-end
+    const body: ITransaction = {
+      "studentId": student.id,
+      "advantageId": advantageId,
+      "studentBalance": newBalance,
+      "dateTime": new Date()
+    }
+
+    // envia transação para o back-end
     try {
-        const response = axios.put(`http://localhost:8080/api/advantage`,
-        {...student, balance: newBalance});
+        const response = axios.post(`http://localhost:8080/api/advantage`, body);
         setStudent({...student, balance: newBalance});
         alert("Troca realizada com sucesso!");
     } catch (err) {
