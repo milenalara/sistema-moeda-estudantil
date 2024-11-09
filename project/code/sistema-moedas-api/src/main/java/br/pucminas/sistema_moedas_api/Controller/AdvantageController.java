@@ -2,6 +2,7 @@ package br.pucminas.sistema_moedas_api.Controller;
 
 import br.pucminas.sistema_moedas_api.DTO.AdvantageCreateDTO;
 import br.pucminas.sistema_moedas_api.DTO.AdvantageGetDTO;
+import br.pucminas.sistema_moedas_api.DTO.TransactionDTO;
 import br.pucminas.sistema_moedas_api.Service.AdvantageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -48,6 +49,12 @@ public class AdvantageController {
   @PutMapping("/update/{id}")
   public ResponseEntity<Void> update(@RequestBody AdvantageCreateDTO advantage, @PathVariable("id") Long id) {
     advantageService.update(advantage, id);
+    return ResponseEntity.noContent().build();
+  }
+
+  @PostMapping("/exchange")
+  public ResponseEntity<Void> exchange(@RequestBody TransactionDTO transactionDTO) {
+    advantageService.exchange(transactionDTO);
     return ResponseEntity.noContent().build();
   }
 

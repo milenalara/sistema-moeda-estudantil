@@ -64,7 +64,7 @@ const ExchangeAdvantages = () => {
 
     // envia a atualização do saldo para o back-end
     try {
-        const response = axios.patch(`http://localhost:8080/api/student/update/${student.id}`,
+        const response = axios.put(`http://localhost:8080/api/advantage`,
         {...student, balance: newBalance});
         setStudent({...student, balance: newBalance});
         alert("Troca realizada com sucesso!");

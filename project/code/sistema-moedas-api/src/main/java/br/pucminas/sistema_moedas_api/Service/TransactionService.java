@@ -50,19 +50,10 @@ public class TransactionService {
   }
 
   private TransactionDTO convertToDTO(Transaction transaction) {
-    StudentDTO student = new StudentDTO(transaction.getStudent().getId(), transaction.getStudent().getName());
-    AdvantageGetDTO advantage = new AdvantageGetDTO(
-        transaction.getAdvantage().getId(),
-        transaction.getAdvantage().getName(),
-        transaction.getAdvantage().getDescription(),
-        transaction.getAdvantage().getCost(),
-        new AdvantageGetCompanyDTO(transaction.getAdvantage().getId(), transaction.getAdvantage().getName())
-    );
-
     return new TransactionDTO(
-        transaction.getId(),
-        student,
-        advantage,
+        transaction.getStudent().getId(),
+        transaction.getAdvantage().getId(),
+        transaction.getStudent().getBalance(),
         transaction.getDateTime()
     );
   }
