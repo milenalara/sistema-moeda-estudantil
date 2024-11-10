@@ -1,20 +1,21 @@
 import React from "react";
-import { Button } from "@mui/material";
+import { Routes, Route } from "react-router-dom";
 import StudentAppBar from "./StudentAppBar";
-import { StudentProvider } from "../../context/StudentContext";
 import { useStudent } from "../../context/StudentContext";
-
 import ExchangeAdvantages from "./ExchangeAdvantages";
 
 const StudentPage = () => {
   const { student, refreshStudent } = useStudent();
 
   return (
-      <>
-        <StudentAppBar student={student} />
-        <ExchangeAdvantages />
-      </>
-
+    <>
+      <StudentAppBar student={student} />
+      <Routes>
+        <Route path="/" element={<div>Home Content</div>} />
+        <Route path="vantagens" element={<ExchangeAdvantages />} />
+        {/* Add other routes here */}
+      </Routes>
+    </>
   );
 };
 

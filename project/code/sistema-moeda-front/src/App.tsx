@@ -61,8 +61,7 @@ function App() {
               path="/admin/editar/aluno/:id"
               element={<EditStudentPage />}
             />
-            <Route path="/aluno" element={<StudentPage />} />
-            <Route path="/aluno/vantagens" element={<ExchangeAdvantages />} />
+            <Route path="/aluno/*" element={<StudentPage />} />
           </Routes>
         </Router>
       </StudentProvider>
