@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 
 public record TransactionDTO(
+    Long id,
     Long studentId,
     Long advantageId,
     Integer cost,
-    Integer studentBalance,
+    Integer balance,
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'") LocalDateTime dateTime
 ) {
 }

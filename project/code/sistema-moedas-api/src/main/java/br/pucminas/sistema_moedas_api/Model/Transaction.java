@@ -28,5 +28,9 @@ public class Transaction {
   @JoinColumn(name = "advantage_id", nullable = false)
   Advantage advantage;
 
+  @Column(name = "date_time")
   LocalDateTime dateTime;
+
+  @Column(name = "balance")
+  Integer balance;
 }

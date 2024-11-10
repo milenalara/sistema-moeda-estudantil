@@ -46,6 +46,7 @@ const ExchangeAdvantages = () => {
     }
 
     const body: ITransaction = {
+      id: 1,
       studentId: student.id,
       advantageId: advantageId,
       cost: advantage.cost,

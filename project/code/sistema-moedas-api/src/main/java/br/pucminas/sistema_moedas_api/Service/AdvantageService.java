@@ -81,7 +81,7 @@ public class AdvantageService {
     Student student = studentRepository.findById(transactionDTO.studentId())
         .orElseThrow(()-> new UserNotFoundException("Student not found"));
 
-    student.setBalance(transactionDTO.studentBalance());
+    student.setBalance(transactionDTO.balance());
     studentRepository.save(student);
 
     Advantage advantage = advantageRepository.findById(transactionDTO.advantageId())

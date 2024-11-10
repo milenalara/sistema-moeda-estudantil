@@ -55,6 +55,7 @@ public class TransactionService {
 
   private TransactionDTO convertToDTO(Transaction transaction) {
     return new TransactionDTO(
+        transaction.getId(),
         transaction.getStudent().getId(),
         transaction.getAdvantage().getId(),
         transaction.getAdvantage().getCost(),
