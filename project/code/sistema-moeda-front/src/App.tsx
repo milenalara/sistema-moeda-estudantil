@@ -26,37 +26,46 @@ import {
   Navigate,
 } from "react-router-dom";
 import ExchangeAdvantages from "./pages/Student/ExchangeAdvantages";
+import { StudentProvider } from "./context/StudentContext";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <UserProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/home" element={<Home />} />
-          {/* <Route path="/aluno" element={<Aluno />} /> */}
-          <Route path="/adminAluno" element={<AdminAluno />} />
-          <Route path="/empresa" element={<Empresa />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/adminEmpresa" element={<AdminEmpresa />} />
-          <Route path="/adminProfessor" element={<AdminProfessor />} />
-          <Route path="/professor" element={<Professor />} />
-          <Route path="/professorLogin" element={<ProfessorLogin />} />
-          <Route path="/adminAlunoEdit/:id" element={<AdminAlunoEdit />} />
-          <Route path="/professorHistory" element={<ProfessorHistory />} />
-          <Route path="/adminAlunoEdit/:id" element={<AdminAlunoEdit />} />
-          <Route path="/vantagemEdit/:id" element={<VantagemEdit />} />
-          <Route path="/adminEmpresa/edit/:id" element={<AdminEmpresaEdit />} />
-          <Route path="/admin/estudantes" element={<AdminStudentPage />} />
-          <Route path="/empresaLogin" element={<CompanyLogin />} />
-          <Route path="/aluno/login" element={<LoginPage />} />
-          <Route path="/admin/editar/aluno/:id" element={<EditStudentPage />} />
-          <Route path="/aluno" element={<StudentPage />} />
-          <Route path="/aluno/vantagens" element={<ExchangeAdvantages />} />
-        </Routes>
-      </Router>
+      <StudentProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/home" element={<Home />} />
+            {/* <Route path="/aluno" element={<Aluno />} /> */}
+            <Route path="/adminAluno" element={<AdminAluno />} />
+            <Route path="/empresa" element={<Empresa />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/adminEmpresa" element={<AdminEmpresa />} />
+            <Route path="/adminProfessor" element={<AdminProfessor />} />
+            <Route path="/professor" element={<Professor />} />
+            <Route path="/professorLogin" element={<ProfessorLogin />} />
+            <Route path="/adminAlunoEdit/:id" element={<AdminAlunoEdit />} />
+            <Route path="/professorHistory" element={<ProfessorHistory />} />
+            <Route path="/adminAlunoEdit/:id" element={<AdminAlunoEdit />} />
+            <Route path="/vantagemEdit/:id" element={<VantagemEdit />} />
+            <Route
+              path="/adminEmpresa/edit/:id"
+              element={<AdminEmpresaEdit />}
+            />
+            <Route path="/admin/estudantes" element={<AdminStudentPage />} />
+            <Route path="/empresaLogin" element={<CompanyLogin />} />
+            <Route path="/aluno/login" element={<LoginPage />} />
+            <Route
+              path="/admin/editar/aluno/:id"
+              element={<EditStudentPage />}
+            />
+            <Route path="/aluno" element={<StudentPage />} />
+            <Route path="/aluno/vantagens" element={<ExchangeAdvantages />} />
+          </Routes>
+        </Router>
+      </StudentProvider>
     </UserProvider>
   );
 }
