@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 public record TransactionDTO(
     Long studentId,
     Long advantageId,
+    Integer cost,
     Integer studentBalance,
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'") LocalDateTime dateTime
 ) {

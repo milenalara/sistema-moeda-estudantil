@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import StudentAppBar from "./StudentAppBar";
 import { useStudent } from "../../context/StudentContext";
 import ExchangeAdvantages from "./ExchangeAdvantages";
+import Statement from "./Statement";
 
 const StudentPage = () => {
   const { student, refreshStudent } = useStudent();
@@ -13,7 +14,7 @@ const StudentPage = () => {
       <Routes>
         <Route path="/" element={<div>Home Content</div>} />
         <Route path="vantagens" element={<ExchangeAdvantages />} />
-        {/* Add other routes here */}
+        <Route path="extrato" element={<Statement />} />
       </Routes>
     </>
   );

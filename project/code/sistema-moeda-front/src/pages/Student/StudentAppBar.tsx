@@ -22,10 +22,9 @@ interface StudentAppBarProps {
   student: IStudent | null;
 }
 
-
 const pages = [
   { name: "Home", path: "/aluno" },
-  { name: "Extrato", path: "/aluno/saldo" },
+  { name: "Extrato", path: "/aluno/extrato" },
   { name: "Vantagens", path: "/aluno/vantagens" },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];

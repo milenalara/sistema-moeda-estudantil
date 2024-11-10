@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios, { AxiosError } from "axios";
-import StudentAppBar from "./StudentAppBar";
 import Button from "@mui/material/Button";
-import IStudent from "../../data/model/IStudent";
 import IAdvantage from "../../data/model/IAdvantage";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 import { UserContext } from "../../context/UserContext";
@@ -50,6 +48,7 @@ const ExchangeAdvantages = () => {
     const body: ITransaction = {
       studentId: student.id,
       advantageId: advantageId,
+      cost: advantage.cost,
       studentBalance: newBalance,
       dateTime: new Date().toISOString()
     };

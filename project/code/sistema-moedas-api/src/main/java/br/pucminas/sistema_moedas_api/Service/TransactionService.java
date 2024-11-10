@@ -49,10 +49,15 @@ public class TransactionService {
     return transactionRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
   }
 
+  public List<TransactionDTO> getByStudentId(Long studentId) {
+    return transactionRepository.findByStudent_Id(studentId).stream().map(this::convertToDTO).collect(Collectors.toList());
+  }
+
   private TransactionDTO convertToDTO(Transaction transaction) {
     return new TransactionDTO(
         transaction.getStudent().getId(),
         transaction.getAdvantage().getId(),
+        transaction.getAdvantage().getCost(),
         transaction.getStudent().getBalance(),
         transaction.getDateTime()
     );
