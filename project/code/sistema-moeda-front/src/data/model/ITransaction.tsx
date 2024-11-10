@@ -2,7 +2,7 @@ interface ITransaction {
   studentId: number;
   advantageId: number;
   studentBalance: number;
-  dateTime: Date;
+  dateTime: string;
 }
 
 export default ITransaction;

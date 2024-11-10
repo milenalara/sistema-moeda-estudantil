@@ -19,7 +19,6 @@ const ExchangeAdvantages = () => {
         const response = await axios.get<IAdvantage[]>(
           `http://localhost:8080/api/advantage`
         );
-        console.log(response.data);
         setAdvantages(response.data);
       } catch (err: any) {
         const error = err as AxiosError;
@@ -64,15 +63,17 @@ const ExchangeAdvantages = () => {
     }
 
     const body: ITransaction = {
-      "studentId": student.id,
-      "advantageId": advantageId,
-      "studentBalance": newBalance,
-      "dateTime": new Date()
-    }
+      studentId: student.id,
+      advantageId: advantageId,
+      studentBalance: newBalance,
+      dateTime: new Date().toISOString()
+    };
+
+    console.log("body", body);
 
     // envia transação para o back-end
     try {
-        const response = axios.post(`http://localhost:8080/api/advantage`, body);
+        const response = axios.post(`http://localhost:8080/api/advantage/exchange`, body);
         setStudent({...student, balance: newBalance});
         alert("Troca realizada com sucesso!");
     } catch (err) {
