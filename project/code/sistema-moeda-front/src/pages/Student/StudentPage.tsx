@@ -4,6 +4,7 @@ import StudentAppBar from "./StudentAppBar";
 import { useStudent } from "../../context/StudentContext";
 import ExchangeAdvantages from "./ExchangeAdvantages";
 import Statement from "./Statement";
+import MyAdvantages from "./MyAdvantages";
 
 const StudentPage = () => {
   const { student, refreshStudent } = useStudent();
@@ -12,7 +13,7 @@ const StudentPage = () => {
     <>
       <StudentAppBar student={student} />
       <Routes>
-        <Route path="/" element={<div>Home Content</div>} />
+        <Route path="/" element={<MyAdvantages />} />
         <Route path="vantagens" element={<ExchangeAdvantages />} />
         <Route path="extrato" element={<Statement />} />
       </Routes>

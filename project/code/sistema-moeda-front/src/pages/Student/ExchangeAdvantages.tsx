@@ -53,8 +53,6 @@ const ExchangeAdvantages = () => {
       dateTime: new Date().toISOString()
     };
 
-    console.log("body", body);
-
     // envia transação para o back-end
     try {
         const response = await axios.post(`http://localhost:8080/api/advantage/exchange`, body);
@@ -101,15 +99,16 @@ const ExchangeAdvantages = () => {
 
   return (
     <div>
-      <DataGrid rows={rows} columns={columns} />
-      {/* {advantages.map((advantage) => (
-        <div key={advantage.id}>
-          <h2>{advantage.name}</h2>
-          <p>descrição: {advantage.description}</p>
-          <p>custo: {advantage.cost}</p>
-          <p>empresa: {advantage.company?.name}</p>
-        </div>
-      ))} */}
+      <DataGrid 
+        rows={rows} 
+        columns={columns} 
+        initialState={{
+          pagination: {
+            paginationModel: { pageSize: 10 },
+          },
+        }}
+        pageSizeOptions={[10, 20, 50, 100]}
+      />
     </div>
   );
 };

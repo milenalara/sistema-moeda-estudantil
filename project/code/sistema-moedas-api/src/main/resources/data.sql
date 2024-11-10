@@ -26,10 +26,16 @@ VALUES
     ('Mundo Verde', 'senha505'),
     ('StartUP Jovem', 'senha606'),
     ('Futuro Digital', 'senha707'),
-    ('Empresa 1', '1234'),
-    ('Empresa 2', '1234'),
-    ('Empresa 3', '1234'),
-    ('Empresa 4', '1234');
+    ('Sucesso Profissional', 'senha808'),
+    ('Eletro Shop', 'senha909'),
+    ('Marketing Now', 'senha010'),
+    ('Leitura Ativa', 'senha111'),
+    ('Cultura Viva', 'senha212'),
+    ('Mente & Corpo', 'senha313'),
+    ('Viaje Mais', 'senha414'),
+    ('Code Academy', 'senha515'),
+    ('Books & Friends', 'senha616'),
+    ('Rede Gourmet', 'senha717');
 
 
 
@@ -156,4 +162,14 @@ INSERT INTO advantage (name, cost, description, company_id) VALUES
     ('Curso de Habilidades Pessoais', 250, 'Aulas gratuitas de desenvolvimento pessoal e profissional na Educação Inteligente', 7),
     ('Programa de Alimentação Saudável', 350, 'Desconto em produtos naturais e orgânicos na Mundo Verde', 8),
     ('Workshop de Empreendedorismo', 200, 'Participação em workshops de empreendedorismo oferecidos pela StartUP Jovem', 9),
-    ('Assinatura de Plataforma de Cursos Digitais', 550, 'Acesso gratuito a uma plataforma de cursos digitais oferecida pelo Futuro Digital', 10);
+    ('Assinatura de Plataforma de Cursos Digitais', 550, 'Acesso gratuito a uma plataforma de cursos digitais oferecida pelo Futuro Digital', 10),
+    ('Consultoria de Carreira', 300, 'Sessão de consultoria de carreira com especialistas da Sucesso Profissional', 11),
+    ('Desconto em Eletrodomésticos', 700, 'Desconto de 15% em eletrodomésticos na Eletro Shop', 12),
+    ('Curso de Marketing Digital', 450, 'Desconto de 25% em curso de marketing digital na Marketing Now', 13),
+    ('Acesso a Biblioteca Digital', 250, 'Assinatura anual gratuita de e-books e audiolivros da Leitura Ativa', 14),
+    ('Voucher para Eventos Culturais', 150, 'Desconto em ingressos de eventos culturais na Cultura Viva', 15),
+    ('Apoio Psicopedagógico', 500, 'Sessões de apoio psicopedagógico na Mente & Corpo', 16),
+    ('Desconto em Passagens Aéreas', 800, 'Desconto de 10% em passagens aéreas pela Viaje Mais', 17),
+    ('Workshop de Programação', 400, 'Participação gratuita em workshops de programação pela Code Academy', 18),
+    ('Desconto em Livrarias Parceiras', 100, 'Desconto de 20% em livrarias parceiras da Books & Friends', 19),
+    ('Voucher para Restaurantes', 200, 'Desconto em refeições em restaurantes da Rede Gourmet', 20);
