@@ -30,21 +30,6 @@ public class TransactionService {
     this.transactionRepository = transactionRepository;
   }
 
-  public Transaction create(TransactionCreateDTO transaction) {
-    Advantage advantage = advantageRepository.findById(transaction.advantageId())
-        .orElseThrow(() -> new RuntimeException("Vantagem não encontrada"));
-
-    Student student = studentRepository.findById(transaction.studentId())
-        .orElseThrow(() -> new RuntimeException("Aluno(a) não encontrado(a)"));
-
-    Transaction response = new Transaction();
-    response.setAdvantage(advantage);
-    response.setStudent(student);
-    response.setDateTime(LocalDateTime.now());
-
-    return response;
-  }
-
   public List<TransactionDTO> getAll() {
     return transactionRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
   }
@@ -59,7 +44,7 @@ public class TransactionService {
         transaction.getStudent().getId(),
         transaction.getAdvantage().getId(),
         transaction.getAdvantage().getCost(),
-        transaction.getStudent().getBalance(),
+        transaction.getBalance(),
         transaction.getDateTime()
     );
   }

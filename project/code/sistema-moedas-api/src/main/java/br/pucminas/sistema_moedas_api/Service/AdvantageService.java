@@ -1,9 +1,6 @@
 package br.pucminas.sistema_moedas_api.Service;
 
-import br.pucminas.sistema_moedas_api.DTO.AdvantageGetDTO;
-import br.pucminas.sistema_moedas_api.DTO.AdvantageCreateDTO;
-import br.pucminas.sistema_moedas_api.DTO.AdvantageGetCompanyDTO;
-import br.pucminas.sistema_moedas_api.DTO.TransactionDTO;
+import br.pucminas.sistema_moedas_api.DTO.*;
 import br.pucminas.sistema_moedas_api.Exception.UserNotFoundException;
 import br.pucminas.sistema_moedas_api.Model.Advantage;
 import br.pucminas.sistema_moedas_api.Model.Company;
@@ -77,20 +74,23 @@ public class AdvantageService {
     return advantageRepository.save(advantage);
   }
 
-  public void exchange(TransactionDTO transactionDTO) {
-    Student student = studentRepository.findById(transactionDTO.studentId())
+  @Transactional
+  public void exchange(TransactionCreateDTO transactionCreateDTO) {
+    Student student = studentRepository.findById(transactionCreateDTO.studentId())
         .orElseThrow(()-> new UserNotFoundException("Student not found"));
 
-    student.setBalance(transactionDTO.balance());
-    studentRepository.save(student);
-
-    Advantage advantage = advantageRepository.findById(transactionDTO.advantageId())
+    Advantage advantage = advantageRepository.findById(transactionCreateDTO.advantageId())
         .orElseThrow(()-> new UserNotFoundException("Benefit not found"));
+
+    int newBalance = student.getBalance() - advantage.getCost();
+    student.setBalance(newBalance);
+    studentRepository.save(student);
 
     Transaction transaction = new Transaction();
     transaction.setStudent(student);
     transaction.setAdvantage(advantage);
-    transaction.setDateTime(transactionDTO.dateTime());
+    transaction.setDateTime(transactionCreateDTO.dateTime());
+    transaction.setBalance(newBalance);
     transactionRepository.save(transaction);
   }
 

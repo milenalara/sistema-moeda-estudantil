@@ -50,7 +50,7 @@ const ExchangeAdvantages = () => {
       studentId: student.id,
       advantageId: advantageId,
       cost: advantage.cost,
-      studentBalance: newBalance,
+
       dateTime: new Date().toISOString()
     };
 
