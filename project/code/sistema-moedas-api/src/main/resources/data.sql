@@ -14,29 +14,28 @@ VALUES ('18.123.456/0001-95', 'Pontifícia Universidade Católica de Minas Gerai
        ('10.876.543/0001-99', 'Faculdade Senac Minas');
 
 
-INSERT INTO company (name, password)
+INSERT INTO company (name, cnpj, email, password)
 VALUES
-    ('Educa Brasil', 'senha123'),
-    ('Saúde & Bem-Estar', 'senha456'),
-    ('Tecnologia Avançada', 'senha789'),
-    ('Linguagem Ativa', 'senha101'),
-    ('Inova Cursos', 'senha202'),
-    ('Fit & Saudável', 'senha303'),
-    ('Educação Inteligente', 'senha404'),
-    ('Mundo Verde', 'senha505'),
-    ('StartUP Jovem', 'senha606'),
-    ('Futuro Digital', 'senha707'),
-    ('Sucesso Profissional', 'senha808'),
-    ('Eletro Shop', 'senha909'),
-    ('Marketing Now', 'senha010'),
-    ('Leitura Ativa', 'senha111'),
-    ('Cultura Viva', 'senha212'),
-    ('Mente & Corpo', 'senha313'),
-    ('Viaje Mais', 'senha414'),
-    ('Code Academy', 'senha515'),
-    ('Books & Friends', 'senha616'),
-    ('Rede Gourmet', 'senha717');
-
+    ('Educa Brasil', '12345678000100', 'contato@educabrasil.com', 'senha123'),
+    ('Saúde & Bem-Estar', '23456789000111', 'contato@saudebemestar.com', 'senha456'),
+    ('Tecnologia Avançada', '34567890000122', 'contato@tecavancada.com', 'senha789'),
+    ('Linguagem Ativa', '45678901000133', 'contato@linguagemativa.com', 'senha101'),
+    ('Inova Cursos', '56789012000144', 'contato@inovacursos.com', 'senha202'),
+    ('Fit & Saudável', '67890123000155', 'contato@fitsaudavel.com', 'senha303'),
+    ('Educação Inteligente', '78901234000166', 'contato@educacaointeligente.com', 'senha404'),
+    ('Mundo Verde', '89012345000177', 'contato@mundoverde.com', 'senha505'),
+    ('StartUP Jovem', '90123456000188', 'contato@startupjovem.com', 'senha606'),
+    ('Futuro Digital', '01234567000199', 'contato@futurodigital.com', 'senha707'),
+    ('Sucesso Profissional', '12345678000200', 'contato@sucessoprofissional.com', 'senha808'),
+    ('Eletro Shop', '23456789000211', 'contato@eletroshop.com', 'senha909'),
+    ('Marketing Now', '34567890000222', 'contato@marketingnow.com', 'senha010'),
+    ('Leitura Ativa', '45678901000233', 'contato@leituraativa.com', 'senha111'),
+    ('Cultura Viva', '56789012000244', 'contato@culturaviva.com', 'senha212'),
+    ('Mente & Corpo', '67890123000255', 'contato@mentecorpo.com', 'senha313'),
+    ('Viaje Mais', '78901234000266', 'contato@viajemais.com', 'senha414'),
+    ('Code Academy', '89012345000277', 'contato@codeacademy.com', 'senha515'),
+    ('Books & Friends', '90123456000288', 'contato@booksfriends.com', 'senha616'),
+    ('Rede Gourmet', '01234567000299', 'contato@redegourmet.com', 'senha717');
 
 
 INSERT INTO department (name)
