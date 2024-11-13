@@ -2,9 +2,9 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import StudentAppBar from "./StudentAppBar";
 import { StudentProvider, useStudent } from "../../context/StudentContext";
-import ExchangeAdvantages from "./ExchangeAdvantages";
-import Statement from "./Statement";
-import MyAdvantages from "./MyAdvantages";
+import ExchangeAdvantages from "./ExchangeAdvantages/ExchangeAdvantages";
+import Statement from "./Statement/Statement";
+import MyAdvantages from "./MyAdvantages/MyAdvantages";
 
 const StudentPage = () => {
   const { student, refreshStudent } = useStudent();
