@@ -5,9 +5,11 @@ import br.pucminas.sistema_moedas_api.DTO.LoginResponseDTO;
 import br.pucminas.sistema_moedas_api.Exception.IncorrectPasswordException;
 import br.pucminas.sistema_moedas_api.Exception.UserNotFoundException;
 import br.pucminas.sistema_moedas_api.Model.Admin;
+import br.pucminas.sistema_moedas_api.Model.Company;
 import br.pucminas.sistema_moedas_api.Model.Professor;
 import br.pucminas.sistema_moedas_api.Model.Student;
 import br.pucminas.sistema_moedas_api.Repository.AdminRepository;
+import br.pucminas.sistema_moedas_api.Repository.CompanyRepository;
 import br.pucminas.sistema_moedas_api.Repository.ProfessorRepository;
 import br.pucminas.sistema_moedas_api.Repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class UserService {
   ProfessorRepository professorRepository;
   @Autowired
   StudentRepository studentRepository;
+  @Autowired
+  private CompanyRepository companyRepository;
 
   public LoginResponseDTO login(LoginRequestDTO requestDTO) {
     if(adminRepository.existsByEmail(requestDTO.email())) {
@@ -62,6 +66,20 @@ public class UserService {
       return new LoginResponseDTO(
           student.getId(),
           student.getClass().getSimpleName()
+      );
+    }
+
+    if(companyRepository.existsByEmail(requestDTO.email())) {
+      Company company = companyRepository.findByEmail(requestDTO.email())
+          .orElseThrow(()-> new UserNotFoundException("Não existe aluno com o email informado"));
+
+      if(!company.getPassword().equals(requestDTO.password())) {
+        throw new IncorrectPasswordException("Senha incorreta");
+      }
+
+      return new LoginResponseDTO(
+          company.getId(),
+          company.getClass().getSimpleName()
       );
     }
 

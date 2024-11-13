@@ -34,6 +34,7 @@ const LoginPage = () => {
         if (response.data.userType === "Admin") navigate("/admin");
         if (response.data.userType === "Professor") navigate("/professor");
         if (response.data.userType === "Student") navigate("/aluno");
+        if (response.data.userType === "Company") navigate("/empresa");
       }
     } catch (err) {
       if (axios.isAxiosError(err)) {
@@ -63,7 +64,7 @@ const LoginPage = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        flexWrap: "wrap",
+        height: "100vh",
         "& > :not(style)": {
           m: 1,
           width: 300,

@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import StudentAppBar from "./StudentAppBar";
-import { useStudent } from "../../context/StudentContext";
+import { StudentProvider, useStudent } from "../../context/StudentContext";
 import ExchangeAdvantages from "./ExchangeAdvantages";
 import Statement from "./Statement";
 import MyAdvantages from "./MyAdvantages";
