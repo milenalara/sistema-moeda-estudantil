@@ -1,21 +1,22 @@
-@startuml sequencia
-
+@startuml
+participant Empresa as emp
 participant Professor as prof
 participant Aluno as alu
-participant Empresa as emp
-participant Vantagem as van
-participant Pagamento as pay
-participant Transações as tra
+participant Administrador as adm
 
+emp -> prof: DoWork
+activate A #FFBBBB
 
-->prof: receberMoedas
-prof->alu: enviarMoedas
-prof -> pay: registraPagamento
-emp->van: criaVantagem
-alu->van: compraVantagem
-alu->tra: registraTransação
+A -> A: Internal call
+activate A #DarkSalmon
 
+A -> B: << createRequest >>
+activate B
 
-
+B --> A: RequestCreated
+deactivate B
+deactivate A
+A -> User: Done
+deactivate A
 
 @enduml

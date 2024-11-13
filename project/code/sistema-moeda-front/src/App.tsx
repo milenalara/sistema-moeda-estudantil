@@ -3,13 +3,7 @@ import "./index.css";
 import LoginPage from "./pages/Login/LoginPage";
 import { UserProvider } from "./context/UserContext";
 import StudentPage from "./pages/Student/StudentPage";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import ExchangeAdvantages from "./pages/Student/ExchangeAdvantages";
+import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
 import { StudentProvider } from "./context/StudentContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminPage from "./pages/Admin/AdminPage";
