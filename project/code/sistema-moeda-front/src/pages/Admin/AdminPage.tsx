@@ -4,6 +4,7 @@ import AdminAppBar from "./AdminAppBar";
 import StudentCRUD from "./StudentCRUD/StudentCRUD";
 import ProfessorCRUD from "./ProfessorCRUD/ProfessorCRUD";
 import CompanyCRUD from "./CompanyCRUD/CompanyCRUD";
+import styled from "styled-components";
 
 const AdminPage = () => {
   return (
