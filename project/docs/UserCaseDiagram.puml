@@ -1,36 +1,34 @@
 @startuml
 left to right direction
 
+actor "Usuário" as usuario
 actor "Aluno" as aluno
 actor "Professor" as professor
 actor "Empresa Parceira" as empresa
 
 rectangle Sistema {
-    usecase "Realizar Cadastro" as RealizarCadastroAluno
-    usecase "Realizar Cadastro" as RealizarCadastroEmpresa
-    usecase "Realizar Login" as RealizarLogin
+    usecase "Realizar Cadastro (UC01)" as UC01
+    usecase "Realizar Login (UC02)" as UC02
 
-    usecase "Distribuir Moedas" as DistribuirMoedas
+    usecase "Consultar saldo e transações (UC03)" as UC03
 
-    usecase "Consultar saldo e transações" as ConsultarSaldoAluno
-    usecase "Consultar saldo e transações" as ConsultarSaldoProfessor
+    usecase "Distribuir Moedas (UC04)" as UC04
 
     usecase "Cadastrar vantagens" as CadastrarVantagem
     usecase "Trocar moedas por vantagens" as TrocarMoedas
     usecase "Enviar cupom para aluno e empresa" as EnviarCupom
 }
 
-aluno --> RealizarCadastroAluno
-aluno --> RealizarLogin
-aluno --> ConsultarSaldoAluno
+usuario --> UC01
+usuario --> UC02
+aluno --> UC03
 aluno --> TrocarMoedas
 
-professor --> RealizarLogin
 professor --> DistribuirMoedas
-professor --> ConsultarSaldoProfessor
+professor --> UC03
 
 empresa --> RealizarCadastroEmpresa
-empresa --> RealizarLogin
+empresa --> UC02
 empresa --> CadastrarVantagem
 
 TrocarMoedas .> EnviarCupom : <<include>>
