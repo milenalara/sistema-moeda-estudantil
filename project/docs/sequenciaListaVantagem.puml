@@ -1,0 +1,21 @@
+@startuml sequencia
+
+participant VantagemController as vanC
+participant VantagemService as vanS
+participant VantagemRepository as vanR
+
+-> vanC :Solicitação GET
+activate vanC
+vanC -> vanS :findAll()
+activate vanS
+vanS -> vanR : findAll()
+activate vanR
+vanS <-- vanR : Retorna lista de Vantagens
+deactivate vanR
+
+vanC <-- vanS 
+deactivate vanS
+
+<-- vanC : Responde solicitação GET
+
+@enduml

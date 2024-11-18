@@ -1,38 +1,31 @@
 @startuml sequencia
 
-participant Professor as prof
-participant Aluno as alu
 participant Empresa as emp
+participant VantagemController as vanC
+participant VantagemService as vanS
+participant EmpresaRepository as empR
 participant Vantagem as van
-participant Pagamento as pay
-participant Transações as tra
 
-
-->prof: receberMoedas
-
-prof->alu: enviarMoedas
-activate alu
-alu --> prof
-deactivate alu
-
-prof -> pay: registraPagamento
-activate pay
-pay --> prof
-deactivate pay
-
-emp->van: criaVantagem
+emp -> vanC : Solicitação de Criação
+activate emp
+activate vanC
+vanC -> vanS : AdvantageService.create()
+activate vanS
+vanS -> van : newVantagem()
 activate van
-van --> emp
+vanS <-- van
 deactivate van
 
-alu->van: compraVantagem
-activate van
-van --> alu
-deactivate van
+vanS -> empR : Procurar EmpresaFindById()
+activate empR
+vanS <-- empR : Retorna Empresa
+deactivate empR
 
-alu->tra: registraTransação
-activate tra
-tra --> alu
-deactivate tra
+vanC <-- vanS : Retorna Vantagem Criada
+deactivate vanS
+
+emp <-- vanC : Responde solicitação
+deactivate vanC
+deactivate emp
 
 @enduml
