@@ -17,5 +17,6 @@ vanC <-- vanS
 deactivate vanS
 
 <-- vanC : Responde solicitação GET
+deactivate vanC
 
 @enduml
