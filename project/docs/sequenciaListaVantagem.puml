@@ -6,7 +6,7 @@ participant VantagemRepository as vanR
 
 -> vanC :Solicitação GET
 activate vanC
-vanC -> vanS :findAll()
+vanC -> vanS : findAll()
 activate vanS
 vanS -> vanR : findAll()
 activate vanR

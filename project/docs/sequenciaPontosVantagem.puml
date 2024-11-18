@@ -29,6 +29,7 @@ payC <-- payS : Retorna Payment
 deactivate payS
 
 <-- payC : Responde Solicitação
+deactivate payC
 
 
 @enduml
