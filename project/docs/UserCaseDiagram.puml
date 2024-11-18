@@ -7,30 +7,35 @@ actor "Professor" as professor
 actor "Empresa Parceira" as empresa
 
 rectangle Sistema {
-    usecase "Realizar Cadastro (UC01)" as UC01
-    usecase "Realizar Login (UC02)" as UC02
+    usecase "Realizar Login (UC01)" as UC01
+    usecase "Realizar Cadastro (UC02)" as UC02
 
     usecase "Consultar saldo e transações (UC03)" as UC03
 
     usecase "Distribuir Moedas (UC04)" as UC04
 
-    usecase "Cadastrar vantagens" as CadastrarVantagem
-    usecase "Trocar moedas por vantagens" as TrocarMoedas
-    usecase "Enviar cupom para aluno e empresa" as EnviarCupom
+    usecase "Cadastrar vantagens (UC05)" as UC05
+    usecase "Trocar moedas por vantagens" as UC06
+    usecase "Enviar cupom para aluno" as UC07
 }
 
+
+usuario <-- aluno
+usuario <-- professor
+usuario <-- empresa
+
 usuario --> UC01
-usuario --> UC02
+
+aluno --> UC02
 aluno --> UC03
-aluno --> TrocarMoedas
-
-professor --> DistribuirMoedas
 professor --> UC03
-
-empresa --> RealizarCadastroEmpresa
+professor --> UC04
 empresa --> UC02
-empresa --> CadastrarVantagem
 
-TrocarMoedas .> EnviarCupom : <<include>>
+aluno --> UC06
+
+empresa --> UC05
+
+UC06 .> UC07 : <<include>>
 
 @enduml
