@@ -1,5 +1,6 @@
 package br.pucminas.sistema_moedas_api.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class EducationalInstitution {
   String cnpj; // Cadastro Nacional de Pessoas Juridicas = National Registry of Legal Entities
   String name;
 
+  @JsonIgnore
   @OneToMany(mappedBy = "educationalInstitution")
   List<Student> students;
 }

@@ -1,12 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import axios, { AxiosError } from "axios";
-import Button from "@mui/material/Button";
 import IAdvantage from "../../../data/model/IAdvantage";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 import { UserContext } from "../../../context/UserContext";
 import ITransactionResponse from "../../../data/model/ITransactionResponse";
-import { useStudent } from "../../../context/StudentContext";
-import { width } from "@mui/system";
 
 const Statement = () => {
   const [transactions, setTransactions] = useState<ITransactionResponse[]>([]);
@@ -19,7 +16,6 @@ const Statement = () => {
         const response = await axios.get<ITransactionResponse[]>(
           `http://localhost:8080/api/transaction/${userContext?.userId}`
         );
-        console.log(response.data);
         setTransactions(response.data);
       } catch (err) {
         const error = err as AxiosError;

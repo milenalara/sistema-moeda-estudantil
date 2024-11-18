@@ -12,8 +12,15 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { Link } from "react-router-dom";
 
-const pages = ['Alunos', 'Professores', 'Empresas'];
+
+const pages = [
+    { name: "Alunos", path: "/admin/alunos" },
+    { name: "Professores", path: "/admin/professores" },
+    { name: "Empresas", path: "/admin/empresas" },
+  ];
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function AdminAppBar() {
@@ -86,8 +93,15 @@ function AdminAppBar() {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography sx={{ textAlign: "center" }}>
+                    <Link
+                      to={page.path}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      {page.name}
+                    </Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -114,11 +128,13 @@ function AdminAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.name}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: "white", display: "block" }}
+                component={Link}
+                to={page.path}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>

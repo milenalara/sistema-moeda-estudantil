@@ -1,12 +1,19 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import AdminAppBar from "./AdminAppBar";
+import StudentCRUD from "./StudentCRUD/StudentCRUD";
+import ProfessorCRUD from "./ProfessorCRUD/ProfessorCRUD";
+import CompanyCRUD from "./CompanyCRUD/CompanyCRUD";
 
 const AdminPage = () => {
   return (
     <>
-    <AdminAppBar/>
-      <h1>AdminPage</h1>
+      <AdminAppBar />
+      <Routes>
+        <Route path="/alunos" element={<StudentCRUD />} />
+        <Route path="/professores" element={<ProfessorCRUD />} />
+        <Route path="/empresas" element={<CompanyCRUD />} />
+      </Routes>
     </>
   );
 };
