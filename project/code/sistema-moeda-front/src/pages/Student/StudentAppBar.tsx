@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -13,16 +13,23 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import logo from "../../assets/money.svg";
+import logo from "../../assets/benefits.png";
+import IStudent from "../../data/model/IStudent";
+import { UserContext } from "../../context/UserContext";
+import axios, { AxiosError } from "axios";
+
+interface StudentAppBarProps {
+  student: IStudent | null;
+}
 
 const pages = [
-  { name: "Home", path: "/aluno/home" },
-  { name: "Saldo", path: "/aluno/saldo" },
+  { name: "Home", path: "/aluno" },
+  { name: "Extrato", path: "/aluno/extrato" },
   { name: "Vantagens", path: "/aluno/vantagens" },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function StudentAppBar() {
+const StudentAppBar: React.FC<StudentAppBarProps> = ({ student }) => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -49,8 +56,7 @@ function StudentAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* logo */}
-          <img src={logo} width="70px" />
+          <img src={logo} width="70px" style={{ padding: "5px" }} />
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -123,6 +129,11 @@ function StudentAppBar() {
                 {page.name}
               </Button>
             ))}
+          </Box>
+          <Box sx={{mr: 5}}>
+            <Typography sx={{ textAlign: "center" }}>
+              SALDO: {student?.balance}
+            </Typography>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

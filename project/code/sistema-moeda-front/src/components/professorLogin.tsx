@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { UserContext } from '../context/UserContext';
 
 function ProfessorLogin() {
   const [count, setCount] = useState(0)
@@ -17,6 +18,7 @@ function ProfessorLogin() {
   }
 
   const loginAs=(id: number)=>{
+    UserContext.userId = id
     navigate('/professor',{state:{id}});
       }
 

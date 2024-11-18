@@ -1,12 +1,15 @@
 package br.pucminas.sistema_moedas_api.Service;
 
-import br.pucminas.sistema_moedas_api.DTO.AdvantageGetDTO;
-import br.pucminas.sistema_moedas_api.DTO.AdvantageCreateDTO;
-import br.pucminas.sistema_moedas_api.DTO.AdvantageGetCompanyDTO;
+import br.pucminas.sistema_moedas_api.DTO.*;
+import br.pucminas.sistema_moedas_api.Exception.UserNotFoundException;
 import br.pucminas.sistema_moedas_api.Model.Advantage;
 import br.pucminas.sistema_moedas_api.Model.Company;
+import br.pucminas.sistema_moedas_api.Model.Student;
+import br.pucminas.sistema_moedas_api.Model.Transaction;
 import br.pucminas.sistema_moedas_api.Repository.AdvantageRepository;
 import br.pucminas.sistema_moedas_api.Repository.CompanyRepository;
+import br.pucminas.sistema_moedas_api.Repository.StudentRepository;
+import br.pucminas.sistema_moedas_api.Repository.TransactionRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +24,10 @@ public class AdvantageService {
   private AdvantageRepository advantageRepository;
   @Autowired
   private CompanyRepository companyRepository;
+  @Autowired
+  private StudentRepository studentRepository;
+  @Autowired
+  private TransactionRepository transactionRepository;
 
   public AdvantageGetDTO findById(Long id) {
     Optional<Advantage> advantage = advantageRepository.findById(id);
@@ -67,6 +74,26 @@ public class AdvantageService {
     return advantageRepository.save(advantage);
   }
 
+  @Transactional
+  public void exchange(TransactionCreateDTO transactionCreateDTO) {
+    Student student = studentRepository.findById(transactionCreateDTO.studentId())
+        .orElseThrow(()-> new UserNotFoundException("Student not found"));
+
+    Advantage advantage = advantageRepository.findById(transactionCreateDTO.advantageId())
+        .orElseThrow(()-> new UserNotFoundException("Benefit not found"));
+
+    int newBalance = student.getBalance() - advantage.getCost();
+    student.setBalance(newBalance);
+    studentRepository.save(student);
+
+    Transaction transaction = new Transaction();
+    transaction.setStudent(student);
+    transaction.setAdvantage(advantage);
+    transaction.setDateTime(transactionCreateDTO.dateTime());
+    transaction.setBalance(newBalance);
+    transactionRepository.save(transaction);
+  }
+
   private AdvantageGetDTO convertToDTO(Advantage advantage) {
     AdvantageGetCompanyDTO company = new AdvantageGetCompanyDTO(advantage.getId(), advantage.getCompany().getName());
 
@@ -85,5 +112,6 @@ public class AdvantageService {
     advantageRepository.delete(foundAdvantage);
     return convertToDTO(foundAdvantage);
   }
+
 
 }

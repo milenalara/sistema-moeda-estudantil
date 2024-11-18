@@ -1,19 +1,25 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { UserContext } from '../context/UserContext';
 
 function Professor(id: number) {
   const [count, setCount] = useState(0)
   const [professor, setProfessor] = useState([])
   const [alunos, setAlunos] = useState([])
   const [pagamentos, setPagamentos] = useState([])
-  const [moedasDoar, setMoedas] = useState({ moedas: 0 })
+  const [moedasDoar, setMoedas] = useState({ moedas: 0 , descricao: ''})
   const navigate = useNavigate();
+  const userContext = useContext(UserContext);
 
   const location = useLocation();
 
   const handleMoedasDoarChange = (e) => {
     setMoedas({ ...moedasDoar, moedas: e.target.value })
+  }
+
+  const handleDescDoarChange = (e) => {
+    setMoedas({ ...moedasDoar, descricao: e.target.value })
   }
 
   useEffect(() => {
@@ -22,7 +28,8 @@ function Professor(id: number) {
   }, []);
 
   const getProfessor = async () => {
-    const res = await axios.get('http://localhost:8080/api/professor/' + location.state.id)
+    const res = await axios.get('http://localhost:8080/api/professor/' + userContext.userId)
+    console.log("PROFESSOR DATA" + res.data);
     setProfessor(res.data)
   }
 
@@ -36,20 +43,19 @@ function Professor(id: number) {
       }
 
   const doarAluno = async (aluno) => {
-    if(professor.balance<moedasDoar.moedas){
+    if(professor.balance < moedasDoar.moedas){
       console.log('moedas insuficientes');
       return
     }
     if(moedasDoar.moedas == 0){
       console.log('favor doar moedas');
-      
       return 
     }
 
     aluno.balance = Number(aluno.balance) + Number(moedasDoar.moedas)
     
     const newAluno = {
-
+      id: aluno.id,
       name: aluno.name,
       email: aluno.email,
       CPF: aluno.CPF,
@@ -60,7 +66,13 @@ function Professor(id: number) {
       course: aluno.course
     }
 
-    await axios.put(`http://localhost:8080/api/student/update/${aluno.id}`, newAluno)
+    if (!newAluno.id) {
+      console.error("Aluno ID is not set", newAluno);
+      alert("Aluno ID must not be null");
+    }
+
+    await axios.put(`http://localhost:8080/api/student/update/${newAluno.id}`, newAluno)
+
 
     professor.balance -= moedasDoar.moedas
     delete professor.departmentId
@@ -71,7 +83,8 @@ function Professor(id: number) {
       date: new Date().toDateString(),
       cost: moedasDoar.moedas,
       professorId: professor.id,
-      studentId: aluno.id
+      description: moedasDoar.descricao,
+      studentId: aluno.id 
     }
 
     await axios.post(`http://localhost:8080/api/payment`, pagamento)
@@ -98,6 +111,7 @@ function Professor(id: number) {
       <ul>
         {alunos.map((aluno) => (
           <><li key={aluno.name}>{aluno.name}, Saldo: {aluno.balance}</li>
+            <input type="text" placeholder='descrição' onChange={handleDescDoarChange}/>
             <button onClick={() => doarAluno(aluno)}>Dar {moedasDoar.moedas} moedas</button></>
         ))}
       </ul>

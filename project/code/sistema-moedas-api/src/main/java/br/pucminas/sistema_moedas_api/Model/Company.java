@@ -16,23 +16,15 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Company { // empresa
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true)
-    Long id;
-
+public class Company extends User { // empresa
     @Column(nullable = false, length = 100)
     @NotBlank
     @Size(min = 3, max = 100)
     String name;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "cnpj", length=14, nullable=false)
     @NotBlank
-    @Size(min = 3, max = 100)
-    String password;
-
-    // criar campo de cnpj
+    String CPNJ;
 
     @OneToMany(mappedBy = "company")
     List<Advantage> advantages;

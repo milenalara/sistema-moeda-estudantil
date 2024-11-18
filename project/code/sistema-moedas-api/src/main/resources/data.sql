@@ -14,23 +14,28 @@ VALUES ('18.123.456/0001-95', 'Pontifícia Universidade Católica de Minas Gerai
        ('10.876.543/0001-99', 'Faculdade Senac Minas');
 
 
-INSERT INTO company (name, password)
+INSERT INTO company (name, cnpj, email, password)
 VALUES
-    ('Educa Brasil', 'senha123'),
-    ('Saúde & Bem-Estar', 'senha456'),
-    ('Tecnologia Avançada', 'senha789'),
-    ('Linguagem Ativa', 'senha101'),
-    ('Inova Cursos', 'senha202'),
-    ('Fit & Saudável', 'senha303'),
-    ('Educação Inteligente', 'senha404'),
-    ('Mundo Verde', 'senha505'),
-    ('StartUP Jovem', 'senha606'),
-    ('Futuro Digital', 'senha707'),
-    ('Empresa 1', '1234'),
-    ('Empresa 2', '1234'),
-    ('Empresa 3', '1234'),
-    ('Empresa 4', '1234');
-
+    ('Educa Brasil', '12345678000100', 'contato@educabrasil.com', 'senha123'),
+    ('Saúde & Bem-Estar', '23456789000111', 'contato@saudebemestar.com', 'senha456'),
+    ('Tecnologia Avançada', '34567890000122', 'contato@tecavancada.com', 'senha789'),
+    ('Linguagem Ativa', '45678901000133', 'contato@linguagemativa.com', 'senha101'),
+    ('Inova Cursos', '56789012000144', 'contato@inovacursos.com', 'senha202'),
+    ('Fit & Saudável', '67890123000155', 'contato@fitsaudavel.com', 'senha303'),
+    ('Educação Inteligente', '78901234000166', 'contato@educacaointeligente.com', 'senha404'),
+    ('Mundo Verde', '89012345000177', 'contato@mundoverde.com', 'senha505'),
+    ('StartUP Jovem', '90123456000188', 'contato@startupjovem.com', 'senha606'),
+    ('Futuro Digital', '01234567000199', 'contato@futurodigital.com', 'senha707'),
+    ('Sucesso Profissional', '12345678000200', 'contato@sucessoprofissional.com', 'senha808'),
+    ('Eletro Shop', '23456789000211', 'contato@eletroshop.com', 'senha909'),
+    ('Marketing Now', '34567890000222', 'contato@marketingnow.com', 'senha010'),
+    ('Leitura Ativa', '45678901000233', 'contato@leituraativa.com', 'senha111'),
+    ('Cultura Viva', '56789012000244', 'contato@culturaviva.com', 'senha212'),
+    ('Mente & Corpo', '67890123000255', 'contato@mentecorpo.com', 'senha313'),
+    ('Viaje Mais', '78901234000266', 'contato@viajemais.com', 'senha414'),
+    ('Code Academy', '89012345000277', 'contato@codeacademy.com', 'senha515'),
+    ('Books & Friends', '90123456000288', 'contato@booksfriends.com', 'senha616'),
+    ('Rede Gourmet', '01234567000299', 'contato@redegourmet.com', 'senha717');
 
 
 INSERT INTO department (name)
@@ -140,8 +145,7 @@ VALUES ('Lucas Almeida', 'aluno@exemplo.com', '12345678901', 'MG1234567', 1, 5, 
        ('Tiago Freitas', 'tiago.freitas@exemplo.com', '16234567897', 'MG1623456', 4, 45, 0, 'default'),
        ('Vanessa Ribeiro', 'vanessa.ribeiro@exemplo.com', '17234567898', 'MG1723456', 5, 61, 0, 'default'),
        ('Diego Araujo', 'diego.araujo@exemplo.com', '18234567899', 'MG1823456', 6, 8, 0, 'default'),
-       ('Fernanda Costa', 'fernanda.costa@exemplo.com', '19234567890', 'MG1923456', 2, 32, 0, 'default'),
-       ('Aluno', 'aluno@exemplo.com', '11111111111', 'MG1111111', 2, 32, 0, 'abcd1234');
+       ('Fernanda Costa', 'fernanda.costa@exemplo.com', '19234567890', 'MG1923456', 2, 32, 0, 'default');
 
 INSERT INTO admin (email, password)
 VALUES ('admin@exemplo.com', 'default');
@@ -157,4 +161,14 @@ INSERT INTO advantage (name, cost, description, company_id) VALUES
     ('Curso de Habilidades Pessoais', 250, 'Aulas gratuitas de desenvolvimento pessoal e profissional na Educação Inteligente', 7),
     ('Programa de Alimentação Saudável', 350, 'Desconto em produtos naturais e orgânicos na Mundo Verde', 8),
     ('Workshop de Empreendedorismo', 200, 'Participação em workshops de empreendedorismo oferecidos pela StartUP Jovem', 9),
-    ('Assinatura de Plataforma de Cursos Digitais', 550, 'Acesso gratuito a uma plataforma de cursos digitais oferecida pelo Futuro Digital', 10);
+    ('Assinatura de Plataforma de Cursos Digitais', 550, 'Acesso gratuito a uma plataforma de cursos digitais oferecida pelo Futuro Digital', 10),
+    ('Consultoria de Carreira', 300, 'Sessão de consultoria de carreira com especialistas da Sucesso Profissional', 11),
+    ('Desconto em Eletrodomésticos', 700, 'Desconto de 15% em eletrodomésticos na Eletro Shop', 12),
+    ('Curso de Marketing Digital', 450, 'Desconto de 25% em curso de marketing digital na Marketing Now', 13),
+    ('Acesso a Biblioteca Digital', 250, 'Assinatura anual gratuita de e-books e audiolivros da Leitura Ativa', 14),
+    ('Voucher para Eventos Culturais', 150, 'Desconto em ingressos de eventos culturais na Cultura Viva', 15),
+    ('Apoio Psicopedagógico', 500, 'Sessões de apoio psicopedagógico na Mente & Corpo', 16),
+    ('Desconto em Passagens Aéreas', 800, 'Desconto de 10% em passagens aéreas pela Viaje Mais', 17),
+    ('Workshop de Programação', 400, 'Participação gratuita em workshops de programação pela Code Academy', 18),
+    ('Desconto em Livrarias Parceiras', 100, 'Desconto de 20% em livrarias parceiras da Books & Friends', 19),
+    ('Voucher para Restaurantes', 200, 'Desconto em refeições em restaurantes da Rede Gourmet', 20);

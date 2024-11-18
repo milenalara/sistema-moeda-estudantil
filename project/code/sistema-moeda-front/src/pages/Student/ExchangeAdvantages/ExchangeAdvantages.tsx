@@ -1,16 +1,16 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios, { AxiosError } from "axios";
-import StudentAppBar from "./StudentAppBar";
 import Button from "@mui/material/Button";
-import IStudent from "../../data/model/IStudent";
-import IAdvantage from "../../data/model/IAdvantage";
+import IAdvantage from "../../../data/model/IAdvantage";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../../../context/UserContext";
+import ITransaction from "../../../data/model/ITransaction";
+import { useStudent } from "../../../context/StudentContext";
 
 const ExchangeAdvantages = () => {
   const [advantages, setAdvantages] = useState<IAdvantage[]>([]);
-  const [student, setStudent] = useState<IStudent | null>(null);
   const userContext = useContext(UserContext);
+  const { student, refreshStudent } = useStudent();
 
   useEffect(() => {
     const fetchAdvantages = async () => {
@@ -18,7 +18,6 @@ const ExchangeAdvantages = () => {
         const response = await axios.get<IAdvantage[]>(
           `http://localhost:8080/api/advantage`
         );
-        console.log(response.data);
         setAdvantages(response.data);
       } catch (err: any) {
         const error = err as AxiosError;
@@ -29,25 +28,9 @@ const ExchangeAdvantages = () => {
     };
 
     fetchAdvantages();
-
-    const fetchStudent = async () => {
-      try {
-        const response = await axios.get<IStudent>(
-          `http://localhost:8080/api/student/${userContext?.userId}`
-        );
-        setStudent(response.data);
-      } catch (err: any) {
-        const error = err as AxiosError;
-        console.error(
-          `Error: ${error.response?.data}\nStatus: ${error.response?.status} - ${error.code}`
-        );
-      }
-    };
-
-    fetchStudent();
   }, [userContext?.userId]);
 
-  const handleExchangePoints = (advantageId: number) => {
+  const handleExchangePoints = async (advantageId: number) => {
     if(!student) return;
 
     const advantage = advantages.find((advantage) => advantage.id === advantageId);
@@ -62,11 +45,19 @@ const ExchangeAdvantages = () => {
         return;
     }
 
-    // envia a atualização do saldo para o back-end
+    const body: ITransaction = {
+      id: 1,
+      studentId: student.id,
+      advantageId: advantageId,
+      cost: advantage.cost,
+
+      dateTime: new Date().toISOString()
+    };
+
+    // envia transação para o back-end
     try {
-        const response = axios.patch(`http://localhost:8080/api/student/update/${student.id}`,
-        {...student, balance: newBalance});
-        setStudent({...student, balance: newBalance});
+        const response = await axios.post(`http://localhost:8080/api/advantage/exchange`, body);
+        await refreshStudent();
         alert("Troca realizada com sucesso!");
     } catch (err) {
         const error = err as AxiosError;
@@ -109,17 +100,16 @@ const ExchangeAdvantages = () => {
 
   return (
     <div>
-      <StudentAppBar />
-      Você tem pontos {student?.balance} para trocar
-      <DataGrid rows={rows} columns={columns} />
-      {/* {advantages.map((advantage) => (
-        <div key={advantage.id}>
-          <h2>{advantage.name}</h2>
-          <p>descrição: {advantage.description}</p>
-          <p>custo: {advantage.cost}</p>
-          <p>empresa: {advantage.company?.name}</p>
-        </div>
-      ))} */}
+      <DataGrid 
+        rows={rows} 
+        columns={columns} 
+        initialState={{
+          pagination: {
+            paginationModel: { pageSize: 10 },
+          },
+        }}
+        pageSizeOptions={[10, 20, 50, 100]}
+      />
     </div>
   );
 };

@@ -2,8 +2,8 @@ package br.pucminas.sistema_moedas_api.Service;
 
 import br.pucminas.sistema_moedas_api.DTO.PaymentCreateDTO;
 import br.pucminas.sistema_moedas_api.DTO.PaymentGetDTO;
-import br.pucminas.sistema_moedas_api.DTO.PaymentGetStudentDTO;
-import br.pucminas.sistema_moedas_api.DTO.PaymentGetProfessorDTO;
+import br.pucminas.sistema_moedas_api.DTO.StudentDTO;
+import br.pucminas.sistema_moedas_api.DTO.ProfessorDTO;
 import br.pucminas.sistema_moedas_api.Model.Professor;
 import br.pucminas.sistema_moedas_api.Model.Payment;
 import br.pucminas.sistema_moedas_api.Model.Student;
@@ -52,6 +52,7 @@ public class PaymentService {
     newPayment.setId(null);
     newPayment.setCost(payment.cost());
     newPayment.setDate(payment.date());
+    newPayment.setDescription(payment.description());
     newPayment.setProfessor(professor);
     newPayment.setStudent(student);
 
@@ -60,12 +61,13 @@ public class PaymentService {
   }
 
   private PaymentGetDTO convertToDTO(Payment payment) {
-    PaymentGetStudentDTO student = new PaymentGetStudentDTO(payment.getId(), payment.getStudent().getName());
-    PaymentGetProfessorDTO professor = new PaymentGetProfessorDTO(payment.getId(), payment.getProfessor().getName());
+    StudentDTO student = new StudentDTO(payment.getId(), payment.getStudent().getName());
+    ProfessorDTO professor = new ProfessorDTO(payment.getId(), payment.getProfessor().getName());
 
     return new PaymentGetDTO(
         payment.getId(),
         payment.getDate(),
+        payment.getDescription(),
         payment.getCost(),
         professor,
         student);
