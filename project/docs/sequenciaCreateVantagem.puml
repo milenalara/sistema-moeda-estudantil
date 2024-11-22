@@ -1,0 +1,31 @@
+@startuml sequencia
+
+participant Empresa as emp
+participant VantagemController as vanC
+participant VantagemService as vanS
+participant EmpresaRepository as empR
+participant Vantagem as van
+
+emp -> vanC : Solicitação de Criação
+activate emp
+activate vanC
+vanC -> vanS : AdvantageService.create()
+activate vanS
+vanS -> van : newVantagem()
+activate van
+vanS <-- van
+deactivate van
+
+vanS -> empR : Procurar EmpresaFindById()
+activate empR
+vanS <-- empR : Retorna Empresa
+deactivate empR
+
+vanC <-- vanS : Retorna Vantagem Criada
+deactivate vanS
+
+emp <-- vanC : Responde solicitação
+deactivate vanC
+deactivate emp
+
+@enduml

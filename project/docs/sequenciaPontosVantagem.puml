@@ -1,0 +1,35 @@
+@startuml sequencia
+
+participant PaymentController as payC
+participant PaymentService as payS
+participant ProfessorRepository as profR
+participant StudentRepository as studR
+participant Payment as pay
+
+-> payC : Solicitação de Pagamento
+activate payC
+payC -> payS : Create(Pagamento)
+activate payS
+payS -> profR : findById(Professor)
+activate profR
+payS <-- profR : Retorna Professor
+deactivate profR
+
+payS -> studR : findById(Aluno)
+activate studR
+payS <-- studR : Retorna Aluno
+deactivate studR
+
+payS -> pay : newPayment(Professor, Aluno, custo)
+activate pay
+payS <- pay : Retorna Payment
+deactivate pay
+
+payC <-- payS : Retorna Payment
+deactivate payS
+
+<-- payC : Responde Solicitação
+deactivate payC
+
+
+@enduml
