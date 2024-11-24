@@ -16,7 +16,7 @@ VALUES ('18.123.456/0001-95', 'Pontifícia Universidade Católica de Minas Gerai
 
 INSERT INTO company (name, cnpj, email, password)
 VALUES
-    ('Educa Brasil', '12345678000100', 'contato@educabrasil.com', 'senha123'),
+    ('Educa Brasil', '12345678000100', 'empresa@exemplo.com', 'default'),
     ('Saúde & Bem-Estar', '23456789000111', 'contato@saudebemestar.com', 'senha456'),
     ('Tecnologia Avançada', '34567890000122', 'contato@tecavancada.com', 'senha789'),
     ('Linguagem Ativa', '45678901000133', 'contato@linguagemativa.com', 'senha101'),
@@ -122,7 +122,7 @@ VALUES ('Administração'),
 
 
 INSERT INTO professor (name, email, cpf, rg, department_id, balance, password)
-VALUES ('Cristiano Macedo', 'professor@exemplo.com','12345678901', 'MG7777777', 1, 0, 'default'),
+VALUES ('Cristiano Macedo', 'professor@exemplo.com','12345678901', 'MG7777777', 1, 1000, 'default'),
        ('Eveline Alonso', 'professor2@exemplo.com','12345678902', 'MG7777778', 1, 0, 'default'),
        ('João Caram', 'professor3@exemplo.com','12345678903', 'MG7777779', 1, 0, 'default');
 

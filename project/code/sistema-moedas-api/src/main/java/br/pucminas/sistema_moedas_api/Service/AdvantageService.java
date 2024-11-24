@@ -41,6 +41,12 @@ public class AdvantageService {
     return advantages.stream().map(this::convertToDTO).collect(Collectors.toList());
   }
 
+
+  public List<AdvantageGetDTO>  findByCompanyId(Long companyId) {
+    List<Advantage> advantages = advantageRepository.findByCompany_Id(companyId);
+    return advantages.stream().map(this::convertToDTO).collect(Collectors.toList());
+  }
+
   @Transactional
   public Advantage create(AdvantageCreateDTO advantage) {
     Advantage newAdvantage = new Advantage();

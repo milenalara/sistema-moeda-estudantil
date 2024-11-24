@@ -35,6 +35,12 @@ public class AdvantageController {
     return ResponseEntity.ok().body(advantage);
   }
 
+  @GetMapping("/company/{companyId}")
+  public ResponseEntity<List<AdvantageGetDTO>> findByCompanyId(@PathVariable Long companyId) {
+    List<AdvantageGetDTO> advantage = advantageService.findByCompanyId(companyId);
+    return ResponseEntity.ok().body(advantage);
+  }
+
   @PostMapping
   public ResponseEntity<Void> create(@RequestBody AdvantageCreateDTO advantage) {
     advantageService.create(advantage);

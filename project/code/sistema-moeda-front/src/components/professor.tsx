@@ -39,7 +39,7 @@ function Professor(id: number) {
   }
 
   const goToHistory=(id: number)=>{
-    navigate('/professorHistory',{state:{id}});
+    navigate('/professor/historico',{state:{id}});
       }
 
   const doarAluno = async (aluno) => {

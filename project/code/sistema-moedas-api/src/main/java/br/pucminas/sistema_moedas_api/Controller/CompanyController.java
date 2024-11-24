@@ -1,7 +1,9 @@
 package br.pucminas.sistema_moedas_api.Controller;
 
+import br.pucminas.sistema_moedas_api.DTO.AdvantageGetDTO;
 import br.pucminas.sistema_moedas_api.DTO.CompanyCreateDTO;
 import br.pucminas.sistema_moedas_api.DTO.CompanyGetDTO;
+import br.pucminas.sistema_moedas_api.Model.Advantage;
 import br.pucminas.sistema_moedas_api.Service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
 @RestController
@@ -41,14 +44,13 @@ public class CompanyController {
 
   @DeleteMapping("/delete/{id}")
   public ResponseEntity<CompanyGetDTO> deleteCompany(@PathVariable("id") long id) {
-      CompanyGetDTO company = companyService.deleteById(id);
-      return ResponseEntity.ok().body(company);
+    CompanyGetDTO company = companyService.deleteById(id);
+    return ResponseEntity.ok().body(company);
   }
-  
+
   @PutMapping("/update/{id}")
   public ResponseEntity<Void> update(@RequestBody CompanyCreateDTO company, @PathVariable("id") Long id) {
-      companyService.update(company, id);
-      return ResponseEntity.noContent().build();
-}
-
+    companyService.update(company, id);
+    return ResponseEntity.noContent().build();
+  }
 }

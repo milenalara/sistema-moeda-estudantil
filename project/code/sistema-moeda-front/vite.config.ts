@@ -10,4 +10,10 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  optimizeDeps: {
+    exclude: [
+      'chunk-OH3LFVO2',
+      'chunk-ABLGNYSL'
+    ]
+  }
 });

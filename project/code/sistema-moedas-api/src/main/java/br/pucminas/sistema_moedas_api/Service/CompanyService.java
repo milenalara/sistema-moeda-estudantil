@@ -1,8 +1,11 @@
 package br.pucminas.sistema_moedas_api.Service;
 
+import br.pucminas.sistema_moedas_api.DTO.AdvantageGetDTO;
 import br.pucminas.sistema_moedas_api.DTO.CompanyCreateDTO;
 import br.pucminas.sistema_moedas_api.DTO.CompanyGetDTO;
+import br.pucminas.sistema_moedas_api.Model.Advantage;
 import br.pucminas.sistema_moedas_api.Model.Company;
+import br.pucminas.sistema_moedas_api.Repository.AdvantageRepository;
 import br.pucminas.sistema_moedas_api.Repository.CompanyRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,9 @@ import java.util.stream.Collectors;
 public class CompanyService {
   @Autowired
   private CompanyRepository companyRepository;
+
+  @Autowired
+  private AdvantageRepository advantageRepository;
 
   public CompanyGetDTO findById(Long id) {
     Optional<Company> company = companyRepository.findById(id);

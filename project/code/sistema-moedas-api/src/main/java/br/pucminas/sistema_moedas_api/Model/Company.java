@@ -26,7 +26,6 @@ public class Company extends User { // empresa
     @NotBlank
     String CPNJ;
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Advantage> advantages;
-
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Professor from "../../components/Professor";
+import ProfessorHistory from "../../components/ProfessorHistory";
 
 const ProfessorPage = () => {
   return (
@@ -8,6 +9,7 @@ const ProfessorPage = () => {
       <h1>ProfessorPage</h1>
       <Routes>
         <Route path="/" element={<Professor/>}/>
+        <Route path="/historico" element={<ProfessorHistory />}/>
       </Routes>
     </>
   );

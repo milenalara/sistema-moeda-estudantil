@@ -1,10 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import Empresa from "../../components/Empresa";
 
 const CompanyPage = () => {
   return (
     <>
-      <h1>CompanyPage</h1>
+      <Routes>
+        <Route path="/" element={<Empresa />} />
+      </Routes>
     </>
   );
 };
