@@ -1,20 +1,19 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom";
 
-function Aluno() {
+function Admin() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-     <h1>Hello admin</h1>
-
-     <Link to="/adminAluno">Administrar alunos</Link>
+    <h1>Boas vindas!</h1>
+     <Link to="/admin/alunos">Administrar alunos</Link>
     <br></br>
-     <Link to="/adminEmpresa">Administrar empresas</Link>
+     <Link to="/admin/empresas">Administrar empresas</Link>
      <br />
-     <Link to="/adminProfessor">Administrar professor</Link>
+     <Link to="/admin/professores">Administrar professor</Link>
     </>
   )
 }
 
-export default Aluno;
+export default Admin;

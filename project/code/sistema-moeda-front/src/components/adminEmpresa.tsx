@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 
 
-function adminEmpresa() {
+function AdminEmpresa() {
   const [count, setCount] = useState(0)
   const [companies, setCompanies] = useState([])
   const [newCompany, setCompany] = useState({ name: '', password: '' })
@@ -33,16 +33,14 @@ function adminEmpresa() {
   }
 
   return (
-    <>
-      <h1>Hello empresa</h1>
-
+    <>  
       <h2>Empresas:</h2>
       <ul>
         {companies.map((company) => (
           <li key={company.id}>
             {company.name}
             <button onClick={() => deleteCompany(company.id)}>Deletar</button>
-            <Link to={`/adminEmpresa/edit/${company.id}`}>
+            <Link to={`/admin/empresas/edit/${company.id}`}>
               <button>Editar</button>
             </Link>
           </li>
@@ -64,4 +62,4 @@ function adminEmpresa() {
   )
 }
 
-export default adminEmpresa;
+export default AdminEmpresa;

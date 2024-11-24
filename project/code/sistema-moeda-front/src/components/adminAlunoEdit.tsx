@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function EditarAluno() {
+function AdminAlunoEdit() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [aluno, setAluno] = useState({name: '', email: '', CPF: '', RG: '', educationalInstitutionId: 0, courseId: 0});
@@ -18,7 +18,7 @@ function EditarAluno() {
 
   const handleUpdate = async () => {
     await axios.put(`http://localhost:8080/api/student/update/${id}`, aluno);
-    navigate('/AdminAluno');
+    navigate('/admin/alunos');
   }
 
   return (
@@ -42,4 +42,4 @@ function EditarAluno() {
   )
 }
 
-export default EditarAluno;
+export default AdminAlunoEdit;

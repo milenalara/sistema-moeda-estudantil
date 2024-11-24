@@ -28,7 +28,7 @@ function AdminEmpresaEdit() {
   const handleSave = async () => {
     try {
       await axios.put(`http://localhost:8080/api/company/update/${id}`, company);
-      navigate('/adminEmpresa');
+      navigate('/admin/empresas');
     } catch (error) {
       console.error("Erro ao salvar alterações:", error);
     }

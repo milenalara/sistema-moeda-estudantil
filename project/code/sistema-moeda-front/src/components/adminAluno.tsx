@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
-function adminAluno() {
+function AdminAluno() {
   const [count, setCount] = useState(0)
   const [alunos, setAlunos] = useState([])
   const [newAluno, setAluno] = useState({name: '', email: '', CPF: '', RG: '', educationalInstitutionId: 0, courseId: 0, password:'default', balance:0})
@@ -44,15 +44,13 @@ function adminAluno() {
   
   return (
     <>
-      <h1>Hello aluno</h1>
-
       <h2>Alunos:</h2>
       <ul>
         {alunos.map((aluno) => (
           <li key={aluno.name}>
             {aluno.name} 
             <button onClick={() => deleteAluno(aluno.id)}>Deletar</button>
-            <Link to={`/adminAlunoEdit/${aluno.id}`}>
+            <Link to={`/admin/alunos/edit/${aluno.id}`}>
               <button>Editar</button>
             </Link>
           </li>
@@ -78,4 +76,4 @@ function adminAluno() {
   )
 }
 
-export default adminAluno;
+export default AdminAluno;

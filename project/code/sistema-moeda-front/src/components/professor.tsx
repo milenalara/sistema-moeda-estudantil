@@ -98,7 +98,7 @@ function Professor(id: number) {
 
   return (
     <>
-      <h1>Hello professor {professor.name}</h1>
+      <h1>Boas vindas {professor.name}</h1>
 
       <button onClick={() => goToHistory(professor.id)}>Historico</button>
 
