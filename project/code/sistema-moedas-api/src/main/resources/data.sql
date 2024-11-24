@@ -122,8 +122,9 @@ VALUES ('Administração'),
 
 
 INSERT INTO professor (name, email, cpf, rg, department_id, balance, password)
-VALUES ('Professor 1', 'professor@exemplo.com','12345678901', 'MG7777777', 1, 0, 'default');
-
+VALUES ('Cristiano Macedo', 'professor@exemplo.com','12345678901', 'MG7777777', 1, 0, 'default'),
+       ('Eveline Alonso', 'professor2@exemplo.com','12345678902', 'MG7777778', 1, 0, 'default'),
+       ('João Caram', 'professor3@exemplo.com','12345678903', 'MG7777779', 1, 0, 'default');
 
 INSERT INTO student (name, email, cpf, rg, educational_institution_id, course_id, balance, password)
 VALUES ('Lucas Almeida', 'aluno@exemplo.com', '12345678901', 'MG1234567', 1, 5, 1000, 'default'),
